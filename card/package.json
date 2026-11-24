@@ -295,6 +295,7 @@
     "$mol_theme_auto",
     "$mol_lights",
     "$mol_media",
+    "$bog_dock_skin",
     "$mol_lights_toggle",
     "$mol_check_icon",
     "$mol_check",

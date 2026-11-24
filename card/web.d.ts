@@ -45292,6 +45292,27 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	export class $bog_dock_skin extends $mol_plugin {
+		mode( ): string
+		attr( ): ({ 
+			'bog_dock_skin': ReturnType< $bog_dock_skin['mode'] >,
+		}) 
+	}
+	
+}
+
+//# sourceMappingURL=skin.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_dock_skin extends $.$bog_dock_skin {
+        mode(): "dark" | "light";
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
 	export class $mol_icon_brightness_4 extends $mol_icon {
 		path( ): string
 	}
@@ -46263,6 +46284,7 @@ declare namespace $ {
 	>
 	export class $bog_dock_card_app extends $mol_page {
 		Theme( ): $mol_theme_auto
+		Skin( ): $bog_dock_skin
 		Lights( ): $mol_lights_toggle
 		link( ): string
 		Card( ): $bog_dock_card

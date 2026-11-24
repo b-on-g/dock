@@ -3959,6 +3959,43 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$bog_dock_skin) = class $bog_dock_skin extends ($.$mol_plugin) {
+		mode(){
+			return "light";
+		}
+		attr(){
+			return {"bog_dock_skin": (this.mode())};
+		}
+	};
+
+
+;
+"use strict";
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $bog_dock_skin extends $.$bog_dock_skin {
+            mode() {
+                return this.$.$mol_lights() ? 'light' : 'dark';
+            }
+        }
+        $$.$bog_dock_skin = $bog_dock_skin;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("bog/dock/skin/skin.view.css", "@font-face {\n\tfont-family: 'Bog Dock Head';\n\tfont-weight: 400 700;\n\tfont-display: swap;\n\tsrc: url(bog/dock/skin/fonts/garamond.woff2) format('woff2');\n\tunicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122;\n}\n\n@font-face {\n\tfont-family: 'Bog Dock Body';\n\tfont-weight: 400 700;\n\tfont-display: swap;\n\tsrc: url(bog/dock/skin/fonts/inter.woff2) format('woff2');\n\tunicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122;\n}\n\n[bog_dock_skin][bog_dock_skin] {\n\t--bog_dock_head: 'Bog Dock Head', Georgia, serif;\n\tfont-family: 'Bog Dock Body', system-ui, sans-serif;\n}\n\n[bog_dock_skin][bog_dock_skin=\"light\"] {\n\t--mol_theme_back: #faf9f7;\n\t--mol_theme_card: #ffffff;\n\t--mol_theme_field: #f4f4f5;\n\t--mol_theme_hover: #0000000a;\n\t--mol_theme_text: #09090b;\n\t--mol_theme_shade: #71717a;\n\t--mol_theme_line: #e4e4e7;\n\t--mol_theme_focus: hsl( 210, 72%, 36% );\n\t--mol_theme_control: hsl( 210, 68%, 42% );\n\t--mol_theme_current: hsl( 26, 82%, 44% );\n\t--mol_theme_special: hsl( 26, 82%, 44% );\n}\n\n[bog_dock_skin][bog_dock_skin=\"dark\"] {\n\t--mol_theme_back: #18181b;\n\t--mol_theme_card: #09090b;\n\t--mol_theme_field: #27272a;\n\t--mol_theme_hover: #ffffff0d;\n\t--mol_theme_text: #d4d4d8;\n\t--mol_theme_shade: #a1a1aa;\n\t--mol_theme_line: #27272a;\n\t--mol_theme_focus: hsl( 210, 76%, 72% );\n\t--mol_theme_control: hsl( 210, 72%, 64% );\n\t--mol_theme_current: hsl( 30, 85%, 60% );\n\t--mol_theme_special: hsl( 30, 85%, 60% );\n}\n");
+})($ || ($ = {}));
+
+;
 	($.$mol_scroll) = class $mol_scroll extends ($.$mol_view) {
 		tabindex(){
 			return -1;
@@ -6608,6 +6645,10 @@ var $;
 
 ;
 	($.$bog_dock_bar) = class $bog_dock_bar extends ($.$giper_web_bar) {
+		Skin(){
+			const obj = new this.$.$bog_dock_skin();
+			return obj;
+		}
 		Id(){
 			const obj = new this.$.$giper_web_bar_link();
 			(obj.title) = () => ("ID");
@@ -6686,6 +6727,9 @@ var $;
 		title(){
 			return (this.$.$mol_locale.text("$bog_dock_bar_title"));
 		}
+		plugins(){
+			return [...(super.plugins()), (this.Skin())];
+		}
 		apps(){
 			return [
 				(this.Id()), 
@@ -6706,6 +6750,7 @@ var $;
 			return [(this.Dock_sources())];
 		}
 	};
+	($mol_mem(($.$bog_dock_bar.prototype), "Skin"));
 	($mol_mem(($.$bog_dock_bar.prototype), "Id"));
 	($mol_mem(($.$bog_dock_bar.prototype), "Gram"));
 	($mol_mem(($.$bog_dock_bar.prototype), "Music"));
@@ -6718,60 +6763,6 @@ var $;
 	($mol_mem(($.$bog_dock_bar.prototype), "Dock"));
 	($mol_mem(($.$bog_dock_bar.prototype), "Dock_sources"));
 
-
-;
-"use strict";
-
-
-;
-	($.$mol_svg_circle) = class $mol_svg_circle extends ($.$mol_svg) {
-		radius(){
-			return ".5%";
-		}
-		pos_x(){
-			return "";
-		}
-		pos_y(){
-			return "";
-		}
-		dom_name(){
-			return "circle";
-		}
-		pos(){
-			return [];
-		}
-		attr(){
-			return {
-				...(super.attr()), 
-				"r": (this.radius()), 
-				"cx": (this.pos_x()), 
-				"cy": (this.pos_y())
-			};
-		}
-	};
-
-
-;
-"use strict";
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_svg_circle extends $.$mol_svg_circle {
-            pos_x() {
-                return this.pos()[0];
-            }
-            pos_y() {
-                return this.pos()[1];
-            }
-        }
-        $$.$mol_svg_circle = $mol_svg_circle;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
 
 ;
 	($.$bog_dock_home_node) = class $bog_dock_home_node extends ($.$mol_link) {
@@ -6903,7 +6894,8 @@ var $;
                 },
                 whiteSpace: 'nowrap',
                 font: {
-                    size: '.75rem',
+                    size: '.8125rem',
+                    weight: 500,
                 },
             },
             ':hover': {
@@ -6926,7 +6918,179 @@ var $;
 })($ || ($ = {}));
 
 ;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("bog/dock/bar/bar.view.css", "[bog_dock_bar] [giper_web_bar_link] > [giper_web_bar_link_icon] {\n\twidth: 2rem;\n\theight: 2rem;\n\tpadding: 0;\n\tobject-fit: contain;\n\tborder-radius: .5rem;\n}\n\n[bog_dock_bar] [giper_web_bar_link] > [giper_web_bar_link_title] {\n\tdisplay: none;\n}\n\n[giper_web_bar_link_icon],\n[bog_dock_home_node_icon] {\n\tfilter: drop-shadow( 0 0 1px #00000040 );\n}\n\n[bog_dock_bar] [giper_web_bar_link][mol_link_current=\"true\"] {\n\tbackground: var(--mol_theme_hover);\n}\n\n[bog_dock_bar] [giper_web_bar_link][mol_link_current=\"true\"] > [giper_web_bar_link_icon] {\n\tbox-shadow: none;\n}\n\n[bog_dock_bar_body] [giper_web_bar_link][mol_link_current=\"true\"]::before {\n\tcontent: '';\n\tposition: absolute;\n\tleft: -.5rem;\n\ttop: .75rem;\n\tbottom: .75rem;\n\twidth: 3px;\n\tborder-radius: 0 3px 3px 0;\n\tbackground: var(--mol_theme_special);\n}\n\n[bog_dock_bar] [giper_web_bar_link_icon] {\n\ttransition: transform .15s;\n}\n\n[bog_dock_bar] [giper_web_bar_link]:hover [giper_web_bar_link_icon] {\n\ttransform: scale(1.08);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_dock_bar, {
+            width: '4rem',
+            background: {
+                color: $mol_theme.back,
+            },
+            border: {
+                radius: 0,
+                right: {
+                    width: '1px',
+                    style: 'solid',
+                    color: $mol_theme.line,
+                },
+            },
+            Head: {
+                padding: 0,
+                justify: {
+                    content: 'center',
+                },
+                align: {
+                    items: 'center',
+                },
+                background: {
+                    color: 'transparent',
+                },
+                border: {
+                    radius: 0,
+                    bottom: {
+                        width: '1px',
+                        style: 'solid',
+                        color: $mol_theme.line,
+                    },
+                },
+                box: {
+                    shadow: 'none',
+                },
+            },
+            Body_content: {
+                padding: {
+                    top: '.5rem',
+                    bottom: '.5rem',
+                    left: '.5rem',
+                    right: '.5rem',
+                },
+                gap: '.25rem',
+            },
+            Foot: {
+                padding: {
+                    top: '.5rem',
+                    bottom: '.5rem',
+                    left: 0,
+                    right: 0,
+                },
+                justify: {
+                    content: 'center',
+                },
+                background: {
+                    color: 'transparent',
+                },
+                border: {
+                    radius: 0,
+                    top: {
+                        width: '1px',
+                        style: 'solid',
+                        color: $mol_theme.line,
+                    },
+                },
+                box: {
+                    shadow: 'none',
+                },
+            },
+            $giper_web_bar_link: {
+                width: '3rem',
+                height: '3rem',
+                padding: 0,
+                position: 'relative',
+                justify: {
+                    content: 'center',
+                },
+                align: {
+                    items: 'center',
+                },
+                border: {
+                    radius: '.5rem',
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_svg_circle) = class $mol_svg_circle extends ($.$mol_svg) {
+		radius(){
+			return ".5%";
+		}
+		pos_x(){
+			return "";
+		}
+		pos_y(){
+			return "";
+		}
+		dom_name(){
+			return "circle";
+		}
+		pos(){
+			return [];
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"r": (this.radius()), 
+				"cx": (this.pos_x()), 
+				"cy": (this.pos_y())
+			};
+		}
+	};
+
+
+;
+"use strict";
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_svg_circle extends $.$mol_svg_circle {
+            pos_x() {
+                return this.pos()[0];
+            }
+            pos_y() {
+                return this.pos()[1];
+            }
+        }
+        $$.$mol_svg_circle = $mol_svg_circle;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$bog_dock_home) = class $bog_dock_home extends ($.$mol_view) {
+		Head_own(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => (["Bog"]);
+			return obj;
+		}
+		Head_accent(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => (["Dock"]);
+			return obj;
+		}
+		Head(){
+			const obj = new this.$.$mol_view();
+			(obj.dom_name) = () => ("h1");
+			(obj.sub) = () => ([(this.Head_own()), (this.Head_accent())]);
+			return obj;
+		}
 		orbit(){
 			return "38";
 		}
@@ -7023,7 +7187,11 @@ var $;
 			return -1;
 		}
 		sub(){
-			return [(this.Stage()), (this.Caption())];
+			return [
+				(this.Head()), 
+				(this.Stage()), 
+				(this.Caption())
+			];
 		}
 		Line(id){
 			const obj = new this.$.$mol_svg_path();
@@ -7045,6 +7213,9 @@ var $;
 			return (this.$.$mol_locale.text("$bog_dock_home_label_none"));
 		}
 	};
+	($mol_mem(($.$bog_dock_home.prototype), "Head_own"));
+	($mol_mem(($.$bog_dock_home.prototype), "Head_accent"));
+	($mol_mem(($.$bog_dock_home.prototype), "Head"));
 	($mol_mem(($.$bog_dock_home.prototype), "Orbit"));
 	($mol_mem(($.$bog_dock_home.prototype), "Lines"));
 	($mol_mem_key(($.$bog_dock_home.prototype), "node_hover"));
@@ -7164,7 +7335,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("bog/dock/home/home.view.css", "[bog_dock_home] {\n\tmin-height: 100dvh;\n}\n\n[bog_dock_home_stage] {\n\twidth: min(94vw, 84vh);\n\theight: min(94vw, 84vh);\n}\n\n[bog_dock_home_node_icon] {\n\twidth: clamp(2.5rem, 9vmin, 4.5rem);\n\theight: clamp(2.5rem, 9vmin, 4.5rem);\n}\n\n[bog_dock_home_node_main=\"true\"] [bog_dock_home_node_icon] {\n\twidth: clamp(4rem, 16vmin, 8rem);\n\theight: clamp(4rem, 16vmin, 8rem);\n}\n\n[bog_dock_home_orbit] {\n\tfill: none;\n\tstroke: var(--mol_theme_line);\n\tstroke-width: .15;\n}\n\n[bog_dock_home_line] {\n\tfill: none;\n\tstroke-width: .5;\n\tstroke-linecap: round;\n\tstroke-dasharray: 1.5 1.5;\n\tanimation: bog_dock_home_flow 1.5s linear infinite;\n\ttransition: opacity .2s;\n}\n\n[bog_dock_home_kind=\"login\"] {\n\tstroke: #8b5cf6;\n}\n\n[bog_dock_home_kind=\"embed\"] {\n\tstroke: #3b82f6;\n}\n\n[bog_dock_home_dim=\"true\"] {\n\topacity: .1;\n}\n\n@keyframes bog_dock_home_flow {\n\tto { stroke-dashoffset: -3; }\n}\n\n@media (prefers-reduced-motion: reduce) {\n\t[bog_dock_home_line] { animation: none; }\n}\n\n[bog_dock_home_node_main=\"true\"] [bog_dock_home_node_title] {\n\tpadding: 0 .5rem;\n\tborder-radius: var(--mol_gap_round);\n\tbackground: var(--mol_theme_back);\n}\n");
+    $mol_style_attach("bog/dock/home/home.view.css", "[bog_dock_home] {\n\tmin-height: 100dvh;\n}\n\n[bog_dock_home_stage] {\n\twidth: min(94vw, 76vh);\n\theight: min(94vw, 76vh);\n}\n\n[bog_dock_home_node_icon] {\n\twidth: clamp(2.5rem, 9vmin, 4.5rem);\n\theight: clamp(2.5rem, 9vmin, 4.5rem);\n}\n\n[bog_dock_home_node_main=\"true\"] [bog_dock_home_node_icon] {\n\twidth: clamp(4rem, 16vmin, 8rem);\n\theight: clamp(4rem, 16vmin, 8rem);\n}\n\n[bog_dock_home_orbit] {\n\tfill: none;\n\tstroke: var(--mol_theme_line);\n\tstroke-width: .15;\n}\n\n[bog_dock_home_line] {\n\tfill: none;\n\tstroke-width: .5;\n\tstroke-linecap: round;\n\tstroke-dasharray: 1.5 1.5;\n\tanimation: bog_dock_home_flow 1.5s linear infinite;\n\ttransition: opacity .2s;\n}\n\n[bog_dock_home_kind=\"login\"] {\n\tstroke: var(--mol_theme_special);\n}\n\n[bog_dock_home_kind=\"embed\"] {\n\tstroke: var(--mol_theme_control);\n}\n\n[bog_dock_home_dim=\"true\"] {\n\topacity: .1;\n}\n\n@keyframes bog_dock_home_flow {\n\tto { stroke-dashoffset: -3; }\n}\n\n@media (prefers-reduced-motion: reduce) {\n\t[bog_dock_home_line] { animation: none; }\n}\n\n[bog_dock_home_node_main=\"true\"] [bog_dock_home_node_title] {\n\tpadding: 0 .5rem;\n\tborder-radius: var(--mol_gap_round);\n\tbackground: var(--mol_theme_back);\n}\n\n[bog_dock_home_head] {\n\tfont-family: var(--bog_dock_head);\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -7188,6 +7359,19 @@ var $;
             background: {
                 color: $mol_theme.back,
             },
+            Head: {
+                margin: 0,
+                gap: '.5rem',
+                font: {
+                    size: '2.5rem',
+                    weight: 500,
+                },
+                lineHeight: '1',
+                color: $mol_theme.text,
+            },
+            Head_accent: {
+                color: $mol_theme.special,
+            },
             Stage: {
                 position: 'relative',
                 flex: {
@@ -7201,6 +7385,9 @@ var $;
             },
             Caption: {
                 color: $mol_theme.shade,
+                font: {
+                    size: '.875rem',
+                },
                 minHeight: '1.5rem',
                 textAlign: 'center',
             },
@@ -7212,6 +7399,10 @@ var $;
 	($.$bog_dock_app) = class $bog_dock_app extends ($.$mol_view) {
 		Theme(){
 			const obj = new this.$.$mol_theme_auto();
+			return obj;
+		}
+		Skin(){
+			const obj = new this.$.$bog_dock_skin();
 			return obj;
 		}
 		wide(){
@@ -7230,7 +7421,7 @@ var $;
 			return obj;
 		}
 		plugins(){
-			return [(this.Theme())];
+			return [(this.Theme()), (this.Skin())];
 		}
 		title(){
 			return (this.home_title());
@@ -7243,6 +7434,7 @@ var $;
 		}
 	};
 	($mol_mem(($.$bog_dock_app.prototype), "Theme"));
+	($mol_mem(($.$bog_dock_app.prototype), "Skin"));
 	($mol_mem(($.$bog_dock_app.prototype), "Bar"));
 	($mol_mem(($.$bog_dock_app.prototype), "Home"));
 

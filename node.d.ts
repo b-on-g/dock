@@ -2026,6 +2026,27 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+
+	export class $bog_dock_skin extends $mol_plugin {
+		mode( ): string
+		attr( ): ({ 
+			'bog_dock_skin': ReturnType< $bog_dock_skin['mode'] >,
+		}) 
+	}
+	
+}
+
+//# sourceMappingURL=skin.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_dock_skin extends $.$bog_dock_skin {
+        mode(): "dark" | "light";
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
     class $mol_dom_listener extends $mol_object {
         _node: any;
         _event: string;
@@ -2597,6 +2618,64 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	type $mol_image__uri_bog_dock_home_node_1 = $mol_type_enforce<
+		ReturnType< $bog_dock_home_node['icon'] >
+		,
+		ReturnType< $mol_image['uri'] >
+	>
+	type $mol_view__sub_bog_dock_home_node_2 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $bog_dock_home_node extends $mol_link {
+		left( ): string
+		top( ): string
+		Icon( ): $mol_image
+		title( ): string
+		Title( ): $mol_view
+		place( ): readonly(number)[]
+		main( ): boolean
+		dim( ): boolean
+		icon( ): string
+		target( ): string
+		hover( next?: any ): any
+		leave( next?: any ): any
+		event( ): ({ 
+			pointerenter( next?: ReturnType< $bog_dock_home_node['hover'] > ): ReturnType< $bog_dock_home_node['hover'] >,
+			pointerleave( next?: ReturnType< $bog_dock_home_node['leave'] > ): ReturnType< $bog_dock_home_node['leave'] >,
+			focusin( next?: ReturnType< $bog_dock_home_node['hover'] > ): ReturnType< $bog_dock_home_node['hover'] >,
+			focusout( next?: ReturnType< $bog_dock_home_node['leave'] > ): ReturnType< $bog_dock_home_node['leave'] >,
+		})  & ReturnType< $mol_link['event'] >
+		style( ): ({ 
+			'left': ReturnType< $bog_dock_home_node['left'] >,
+			'top': ReturnType< $bog_dock_home_node['top'] >,
+		})  & ReturnType< $mol_link['style'] >
+		attr( ): ({ 
+			'bog_dock_home_node_main': ReturnType< $bog_dock_home_node['main'] >,
+			'bog_dock_home_node_dim': ReturnType< $bog_dock_home_node['dim'] >,
+		})  & ReturnType< $mol_link['attr'] >
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=node.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_dock_home_node extends $.$bog_dock_home_node {
+        left(): string;
+        top(): string;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
 	type $giper_web_bar_link__title_bog_dock_bar_1 = $mol_type_enforce<
 		string
 		,
@@ -2753,6 +2832,7 @@ declare namespace $ {
 		ReturnType< $mol_link_source['uri'] >
 	>
 	export class $bog_dock_bar extends $giper_web_bar {
+		Skin( ): $bog_dock_skin
 		Id( ): $giper_web_bar_link
 		Gram( ): $giper_web_bar_link
 		Music( ): $giper_web_bar_link
@@ -2765,6 +2845,7 @@ declare namespace $ {
 		Dock( ): $giper_web_bar_link
 		Dock_sources( ): $mol_link_source
 		title( ): string
+		plugins( ): readonly(any)[]
 		apps( ): readonly(any)[]
 		head( ): readonly(any)[]
 		foot( ): readonly(any)[]
@@ -2773,6 +2854,9 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=bar.view.tree.d.ts.map
+declare namespace $.$$ {
+}
+
 declare namespace $ {
 
 	export class $mol_svg_circle extends $mol_svg {
@@ -2800,142 +2884,107 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $mol_image__uri_bog_dock_home_node_1 = $mol_type_enforce<
-		ReturnType< $bog_dock_home_node['icon'] >
-		,
-		ReturnType< $mol_image['uri'] >
-	>
-	type $mol_view__sub_bog_dock_home_node_2 = $mol_type_enforce<
+	type $mol_view__sub_bog_dock_home_1 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	export class $bog_dock_home_node extends $mol_link {
-		left( ): string
-		top( ): string
-		Icon( ): $mol_image
-		title( ): string
-		Title( ): $mol_view
-		place( ): readonly(number)[]
-		main( ): boolean
-		dim( ): boolean
-		icon( ): string
-		target( ): string
-		hover( next?: any ): any
-		leave( next?: any ): any
-		event( ): ({ 
-			pointerenter( next?: ReturnType< $bog_dock_home_node['hover'] > ): ReturnType< $bog_dock_home_node['hover'] >,
-			pointerleave( next?: ReturnType< $bog_dock_home_node['leave'] > ): ReturnType< $bog_dock_home_node['leave'] >,
-			focusin( next?: ReturnType< $bog_dock_home_node['hover'] > ): ReturnType< $bog_dock_home_node['hover'] >,
-			focusout( next?: ReturnType< $bog_dock_home_node['leave'] > ): ReturnType< $bog_dock_home_node['leave'] >,
-		})  & ReturnType< $mol_link['event'] >
-		style( ): ({ 
-			'left': ReturnType< $bog_dock_home_node['left'] >,
-			'top': ReturnType< $bog_dock_home_node['top'] >,
-		})  & ReturnType< $mol_link['style'] >
-		attr( ): ({ 
-			'bog_dock_home_node_main': ReturnType< $bog_dock_home_node['main'] >,
-			'bog_dock_home_node_dim': ReturnType< $bog_dock_home_node['dim'] >,
-		})  & ReturnType< $mol_link['attr'] >
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=node.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $bog_dock_home_node extends $.$bog_dock_home_node {
-        left(): string;
-        top(): string;
-    }
-}
-
-declare namespace $.$$ {
-}
-
-declare namespace $ {
-
-	type $mol_svg_circle__radius_bog_dock_home_1 = $mol_type_enforce<
+	type $mol_view__sub_bog_dock_home_2 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__dom_name_bog_dock_home_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_view['dom_name'] >
+	>
+	type $mol_view__sub_bog_dock_home_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_svg_circle__radius_bog_dock_home_5 = $mol_type_enforce<
 		ReturnType< $bog_dock_home['orbit'] >
 		,
 		ReturnType< $mol_svg_circle['radius'] >
 	>
-	type $mol_svg_circle__pos_bog_dock_home_2 = $mol_type_enforce<
+	type $mol_svg_circle__pos_bog_dock_home_6 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_svg_circle['pos'] >
 	>
-	type $mol_svg_root__view_box_bog_dock_home_3 = $mol_type_enforce<
+	type $mol_svg_root__view_box_bog_dock_home_7 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_svg_root['view_box'] >
 	>
-	type $mol_svg_root__sub_bog_dock_home_4 = $mol_type_enforce<
+	type $mol_svg_root__sub_bog_dock_home_8 = $mol_type_enforce<
 		ReturnType< $bog_dock_home['lines'] >
 		,
 		ReturnType< $mol_svg_root['sub'] >
 	>
-	type $bog_dock_home_node__title_bog_dock_home_5 = $mol_type_enforce<
+	type $bog_dock_home_node__title_bog_dock_home_9 = $mol_type_enforce<
 		ReturnType< $bog_dock_home['node_title'] >
 		,
 		ReturnType< $bog_dock_home_node['title'] >
 	>
-	type $bog_dock_home_node__uri_bog_dock_home_6 = $mol_type_enforce<
+	type $bog_dock_home_node__uri_bog_dock_home_10 = $mol_type_enforce<
 		ReturnType< $bog_dock_home['node_uri'] >
 		,
 		ReturnType< $bog_dock_home_node['uri'] >
 	>
-	type $bog_dock_home_node__icon_bog_dock_home_7 = $mol_type_enforce<
+	type $bog_dock_home_node__icon_bog_dock_home_11 = $mol_type_enforce<
 		ReturnType< $bog_dock_home['node_icon'] >
 		,
 		ReturnType< $bog_dock_home_node['icon'] >
 	>
-	type $bog_dock_home_node__place_bog_dock_home_8 = $mol_type_enforce<
+	type $bog_dock_home_node__place_bog_dock_home_12 = $mol_type_enforce<
 		ReturnType< $bog_dock_home['node_place'] >
 		,
 		ReturnType< $bog_dock_home_node['place'] >
 	>
-	type $bog_dock_home_node__main_bog_dock_home_9 = $mol_type_enforce<
+	type $bog_dock_home_node__main_bog_dock_home_13 = $mol_type_enforce<
 		ReturnType< $bog_dock_home['node_main'] >
 		,
 		ReturnType< $bog_dock_home_node['main'] >
 	>
-	type $bog_dock_home_node__dim_bog_dock_home_10 = $mol_type_enforce<
+	type $bog_dock_home_node__dim_bog_dock_home_14 = $mol_type_enforce<
 		ReturnType< $bog_dock_home['node_dim'] >
 		,
 		ReturnType< $bog_dock_home_node['dim'] >
 	>
-	type $bog_dock_home_node__hover_bog_dock_home_11 = $mol_type_enforce<
+	type $bog_dock_home_node__hover_bog_dock_home_15 = $mol_type_enforce<
 		ReturnType< $bog_dock_home['node_hover'] >
 		,
 		ReturnType< $bog_dock_home_node['hover'] >
 	>
-	type $bog_dock_home_node__leave_bog_dock_home_12 = $mol_type_enforce<
+	type $bog_dock_home_node__leave_bog_dock_home_16 = $mol_type_enforce<
 		ReturnType< $bog_dock_home['node_leave'] >
 		,
 		ReturnType< $bog_dock_home_node['leave'] >
 	>
-	type $bog_dock_home_stage__13 = $mol_type_enforce<
+	type $bog_dock_home_stage__17 = $mol_type_enforce<
 		ReturnType< $bog_dock_home['nodes'] >[number]
 		,
 		$mol_view
 	>
-	type $mol_view__sub_bog_dock_home_14 = $mol_type_enforce<
+	type $mol_view__sub_bog_dock_home_18 = $mol_type_enforce<
 		ReturnType< $bog_dock_home['stage'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_bog_dock_home_15 = $mol_type_enforce<
+	type $mol_view__sub_bog_dock_home_19 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_svg_path__geometry_bog_dock_home_16 = $mol_type_enforce<
+	type $mol_svg_path__geometry_bog_dock_home_20 = $mol_type_enforce<
 		ReturnType< $bog_dock_home['line_geometry'] >
 		,
 		ReturnType< $mol_svg_path['geometry'] >
 	>
-	type $mol_svg_path__attr_bog_dock_home_17 = $mol_type_enforce<
+	type $mol_svg_path__attr_bog_dock_home_21 = $mol_type_enforce<
 		({ 
 			'bog_dock_home_kind': ReturnType< $bog_dock_home['line_kind'] >,
 			'bog_dock_home_dim': ReturnType< $bog_dock_home['line_dim'] >,
@@ -2944,6 +2993,9 @@ declare namespace $ {
 		ReturnType< $mol_svg_path['attr'] >
 	>
 	export class $bog_dock_home extends $mol_view {
+		Head_own( ): $mol_view
+		Head_accent( ): $mol_view
+		Head( ): $mol_view
 		orbit( ): string
 		Orbit( ): $mol_svg_circle
 		lines( ): readonly($mol_view)[]
@@ -3026,6 +3078,7 @@ declare namespace $ {
 	>
 	export class $bog_dock_app extends $mol_view {
 		Theme( ): $mol_theme_auto
+		Skin( ): $bog_dock_skin
 		wide( ): boolean
 		Bar( ): $bog_dock_bar
 		home_title( ): ReturnType< ReturnType< $bog_dock_app['Home'] >['title'] >

@@ -2,6 +2,10 @@ $mol_theme_auto $mol_plugin
 	light \$mol_theme_light
 	attr * mol_theme <= theme <= dark \$mol_theme_dark
 
+$bog_dock_skin $mol_plugin
+	attr *
+		bog_dock_skin <= mode \light
+
 $mol_scroll $mol_view
 	scroll_top? 0
 	scroll_left? 0
@@ -164,6 +168,9 @@ $giper_web_bar $mol_page
 
 $bog_dock_bar $giper_web_bar
 	title @ \Bog Dock
+	plugins /
+		^
+		<= Skin $bog_dock_skin
 	apps /
 		<= Id $giper_web_bar_link
 			title \ID
@@ -210,15 +217,6 @@ $bog_dock_bar $giper_web_bar
 		<= Dock_sources $mol_link_source
 			uri \https://github.com/b-on-g/dock
 
-$mol_svg_circle $mol_svg
-	dom_name \circle
-	pos /
-	attr *
-		^
-		r <= radius \.5%
-		cx <= pos_x \
-		cy <= pos_y \
-
 $bog_dock_home_node $mol_link
 	place /number
 	main false
@@ -248,11 +246,29 @@ $bog_dock_home_node $mol_link
 			sub /
 				<= title \
 
+$mol_svg_circle $mol_svg
+	dom_name \circle
+	pos /
+	attr *
+		^
+		r <= radius \.5%
+		cx <= pos_x \
+		cy <= pos_y \
+
 $bog_dock_home $mol_view
 	title @ \Bog Dock
 	bar $bog_dock_bar
 	focus? -1
 	sub /
+		<= Head $mol_view
+			dom_name \h1
+			sub /
+				<= Head_own $mol_view
+					sub /
+						\Bog
+				<= Head_accent $mol_view
+					sub /
+						\Dock
 		<= Stage $mol_view
 			sub <= stage /$mol_view
 				<= Lines $mol_svg_root
@@ -289,6 +305,7 @@ $bog_dock_home $mol_view
 $bog_dock_app $mol_view
 	plugins /
 		<= Theme $mol_theme_auto
+		<= Skin $bog_dock_skin
 	title <= home_title
 	attr *
 		^

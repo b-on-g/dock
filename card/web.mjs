@@ -31098,6 +31098,43 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$bog_dock_skin) = class $bog_dock_skin extends ($.$mol_plugin) {
+		mode(){
+			return "light";
+		}
+		attr(){
+			return {"bog_dock_skin": (this.mode())};
+		}
+	};
+
+
+;
+"use strict";
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $bog_dock_skin extends $.$bog_dock_skin {
+            mode() {
+                return this.$.$mol_lights() ? 'light' : 'dark';
+            }
+        }
+        $$.$bog_dock_skin = $bog_dock_skin;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("bog/dock/skin/skin.view.css", "@font-face {\n\tfont-family: 'Bog Dock Head';\n\tfont-weight: 400 700;\n\tfont-display: swap;\n\tsrc: url(bog/dock/skin/fonts/garamond.woff2) format('woff2');\n\tunicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122;\n}\n\n@font-face {\n\tfont-family: 'Bog Dock Body';\n\tfont-weight: 400 700;\n\tfont-display: swap;\n\tsrc: url(bog/dock/skin/fonts/inter.woff2) format('woff2');\n\tunicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122;\n}\n\n[bog_dock_skin][bog_dock_skin] {\n\t--bog_dock_head: 'Bog Dock Head', Georgia, serif;\n\tfont-family: 'Bog Dock Body', system-ui, sans-serif;\n}\n\n[bog_dock_skin][bog_dock_skin=\"light\"] {\n\t--mol_theme_back: #faf9f7;\n\t--mol_theme_card: #ffffff;\n\t--mol_theme_field: #f4f4f5;\n\t--mol_theme_hover: #0000000a;\n\t--mol_theme_text: #09090b;\n\t--mol_theme_shade: #71717a;\n\t--mol_theme_line: #e4e4e7;\n\t--mol_theme_focus: hsl( 210, 72%, 36% );\n\t--mol_theme_control: hsl( 210, 68%, 42% );\n\t--mol_theme_current: hsl( 26, 82%, 44% );\n\t--mol_theme_special: hsl( 26, 82%, 44% );\n}\n\n[bog_dock_skin][bog_dock_skin=\"dark\"] {\n\t--mol_theme_back: #18181b;\n\t--mol_theme_card: #09090b;\n\t--mol_theme_field: #27272a;\n\t--mol_theme_hover: #ffffff0d;\n\t--mol_theme_text: #d4d4d8;\n\t--mol_theme_shade: #a1a1aa;\n\t--mol_theme_line: #27272a;\n\t--mol_theme_focus: hsl( 210, 76%, 72% );\n\t--mol_theme_control: hsl( 210, 72%, 64% );\n\t--mol_theme_current: hsl( 30, 85%, 60% );\n\t--mol_theme_special: hsl( 30, 85%, 60% );\n}\n");
+})($ || ($ = {}));
+
+;
 	($.$mol_icon_brightness_4) = class $mol_icon_brightness_4 extends ($.$mol_icon) {
 		path(){
 			return "M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z";
@@ -31179,6 +31216,10 @@ var $;
 	($.$bog_dock_card_app) = class $bog_dock_card_app extends ($.$mol_page) {
 		Theme(){
 			const obj = new this.$.$mol_theme_auto();
+			return obj;
+		}
+		Skin(){
+			const obj = new this.$.$bog_dock_skin();
 			return obj;
 		}
 		Lights(){
@@ -31288,7 +31329,7 @@ var $;
 			return (this.$.$mol_locale.text("$bog_dock_card_app_title"));
 		}
 		plugins(){
-			return [(this.Theme())];
+			return [(this.Theme()), (this.Skin())];
 		}
 		tools(){
 			return [(this.Lights())];
@@ -31311,6 +31352,7 @@ var $;
 		}
 	};
 	($mol_mem(($.$bog_dock_card_app.prototype), "Theme"));
+	($mol_mem(($.$bog_dock_card_app.prototype), "Skin"));
 	($mol_mem(($.$bog_dock_card_app.prototype), "Lights"));
 	($mol_mem(($.$bog_dock_card_app.prototype), "Card"));
 	($mol_mem(($.$bog_dock_card_app.prototype), "icon_edit"));

@@ -246,6 +246,8 @@
 	deploy \/giper/baza/diagram/files.png
 	deploy \/giper/baza/diagram/network.png
 	deploy \/giper/baza/diagram/jepsen.png
+\/bog/dock/skin
+	deploy \/bog/dock/skin/fonts
 \/bog/dock/card/app
 	include \/bog/id/path
 	include \/bog/id/yard

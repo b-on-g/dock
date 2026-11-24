@@ -80,6 +80,10 @@ $mol_theme_auto $mol_plugin
 	light \$mol_theme_light
 	attr * mol_theme <= theme <= dark \$mol_theme_dark
 
+$bog_dock_skin $mol_plugin
+	attr *
+		bog_dock_skin <= mode \light
+
 $mol_speck $mol_view
 	theme \$mol_theme_accent
 	sub /
@@ -254,6 +258,7 @@ $bog_dock_card_app $mol_page
 	title @ \Object card
 	plugins /
 		<= Theme $mol_theme_auto
+		<= Skin $bog_dock_skin
 	tools /
 		<= Lights $mol_lights_toggle
 	body /

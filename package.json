@@ -145,6 +145,7 @@
     "$mol_charset_encode",
     "$mol_charset_buffer",
     "$mol_file_transaction",
+    "$bog_dock_skin",
     "$bog_dock_bar",
     "$giper_web_bar",
     "$giper_web",
@@ -173,9 +174,9 @@
     "$mol_svg_path",
     "$mol_offline_install",
     "$mol_offline",
+    "$bog_dock_home_node",
     "$bog_dock_home",
-    "$mol_svg_circle",
-    "$bog_dock_home_node"
+    "$mol_svg_circle"
   ],
   "dependencies": {
     "autoinstall": "*",
