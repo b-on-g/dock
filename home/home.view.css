@@ -51,3 +51,9 @@
 @media (prefers-reduced-motion: reduce) {
 	[bog_dock_home_line] { animation: none; }
 }
+
+[bog_dock_home_node_main="true"] [bog_dock_home_node_title] {
+	padding: 0 .5rem;
+	border-radius: var(--mol_gap_round);
+	background: var(--mol_theme_back);
+}
