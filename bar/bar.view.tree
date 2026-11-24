@@ -9,6 +9,10 @@ $bog_dock_bar $giper_web_bar
 			title \Gram
 			uri \https://b-on-g.github.io/gram/
 			icon \bog/gram/logo/logo.svg
+		<= Music $giper_web_bar_link
+			title \Music
+			uri \https://b-on-g.github.io/music/
+			icon \bog/music/app/favicon.svg
 		<= Todo $giper_web_bar_link
 			title \Microtodo
 			uri \https://b-on-g.github.io/microtodo/#!search={query}
@@ -17,10 +21,10 @@ $bog_dock_bar $giper_web_bar
 			title \Molefy
 			uri \https://b-on-g.github.io/molefy/
 			icon \bog/molefy/assets/logo.svg
-		<= Music $giper_web_bar_link
-			title \Music
-			uri \https://b-on-g.github.io/music/
-			icon \bog/music/app/favicon.svg
+		<= Merch $giper_web_bar_link
+			title \Merchquarium
+			uri \https://b-on-g.github.io/merchquarium/
+			icon \bog/dock/logo/merch.svg
 		<= Doodle $giper_web_bar_link
 			title \Doodle
 			uri \https://b-on-g.github.io/doodle/

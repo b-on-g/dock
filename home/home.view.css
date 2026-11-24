@@ -1,0 +1,53 @@
+[bog_dock_home] {
+	min-height: 100dvh;
+}
+
+[bog_dock_home_stage] {
+	width: min(94vw, 84vh);
+	height: min(94vw, 84vh);
+}
+
+[bog_dock_home_node_icon] {
+	width: clamp(2.5rem, 9vmin, 4.5rem);
+	height: clamp(2.5rem, 9vmin, 4.5rem);
+}
+
+[bog_dock_home_node_main="true"] [bog_dock_home_node_icon] {
+	width: clamp(4rem, 16vmin, 8rem);
+	height: clamp(4rem, 16vmin, 8rem);
+}
+
+[bog_dock_home_orbit] {
+	fill: none;
+	stroke: var(--mol_theme_line);
+	stroke-width: .15;
+}
+
+[bog_dock_home_line] {
+	fill: none;
+	stroke-width: .5;
+	stroke-linecap: round;
+	stroke-dasharray: 1.5 1.5;
+	animation: bog_dock_home_flow 1.5s linear infinite;
+	transition: opacity .2s;
+}
+
+[bog_dock_home_kind="login"] {
+	stroke: #8b5cf6;
+}
+
+[bog_dock_home_kind="embed"] {
+	stroke: #3b82f6;
+}
+
+[bog_dock_home_dim="true"] {
+	opacity: .1;
+}
+
+@keyframes bog_dock_home_flow {
+	to { stroke-dashoffset: -3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[bog_dock_home_line] { animation: none; }
+}

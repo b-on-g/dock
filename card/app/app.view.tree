@@ -1,0 +1,30 @@
+$bog_dock_card_app $mol_page
+	title @ \Object card
+	plugins /
+		<= Theme $mol_theme_auto
+	tools /
+		<= Lights $mol_lights_toggle
+	body /
+		<= Content $mol_list
+			rows <= rows /
+				<= Card $bog_dock_card
+					link <= link \
+					host \
+				<= Icon_edit $mol_string
+					hint @ \Icon
+					enabled <= editable false
+					value? <=> icon_edit? \
+				<= Name_edit $mol_string
+					hint @ \Name
+					enabled <= editable
+					value? <=> name_edit? \
+				<= Hint_edit $mol_string
+					hint @ \Description
+					enabled <= editable
+					value? <=> hint_edit? \
+				<= Share $mol_button_copy
+					title @ \Copy link
+					text <= share \
+				<= Create $mol_button_major
+					title @ \Create object
+					click? <=> create? null

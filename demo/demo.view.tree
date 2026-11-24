@@ -4,7 +4,7 @@ $bog_dock_demo $mol_book2
 		<= Theme $mol_theme_auto
 	pages /
 		<= Space $bog_dock_frame
-			host \../../bar/-/index.html
+			host \../../app/-/index.html
 			query <= query
 		<= Main $mol_page
 			title <= title

@@ -1,0 +1,28 @@
+$bog_dock_home_node $mol_link
+	place /number
+	main false
+	dim false
+	icon \
+	target \_self
+	hover? null
+	leave? null
+	event *
+		^
+		pointerenter? <=> hover?
+		pointerleave? <=> leave?
+		focusin? <=> hover?
+		focusout? <=> leave?
+	style *
+		^
+		left <= left \
+		top <= top \
+	attr *
+		^
+		bog_dock_home_node_main <= main
+		bog_dock_home_node_dim <= dim
+	sub /
+		<= Icon $mol_image
+			uri <= icon
+		<= Title $mol_view
+			sub /
+				<= title \

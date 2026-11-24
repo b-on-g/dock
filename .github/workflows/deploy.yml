@@ -15,9 +15,14 @@ jobs:
             - uses: hyoo-ru/mam_build@master2
               with:
                   package: "bog/dock"
-                  modules: 'bar frame'
+                  modules: 'app card/app'
+
+            - name: Collect
+              run: |
+                  cp -r bog/dock/app/- site
+                  cp -r bog/dock/card/app/- site/card
 
             - uses: hyoo-ru/gh-deploy@v4.4.1
               if: github.ref == 'refs/heads/main'
               with:
-                  folder: "bog/dock/bar/-"
+                  folder: "site"

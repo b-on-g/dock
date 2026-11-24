@@ -1,0 +1,19 @@
+$bog_dock_card $mol_link
+	link \
+	host \https://b-on-g.github.io/dock/card/
+	target \_blank
+	sub /
+		<= Icon $mol_view
+			sub /
+				<= icon \
+		<= Info $mol_view
+			sub /
+				<= Name $mol_view
+					sub /
+						<= name \
+				<= Hint $mol_view
+					sub /
+						<= descr \
+		<= Kind $mol_view
+			sub /
+				<= kind \
