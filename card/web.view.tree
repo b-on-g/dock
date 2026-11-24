@@ -22,6 +22,7 @@ $mol_link $mol_view
 $bog_dock_card $mol_link
 	link \
 	host \https://b-on-g.github.io/dock/card/
+	profile_kind @ \Profile
 	target \_blank
 	sub /
 		<= Icon $mol_view
@@ -2206,9 +2207,18 @@ $bog_dock_card_app $mol_page
 					hint @ \Description
 					enabled <= editable
 					value? <=> hint_edit? \
+				<= Status $mol_paragraph
+					title <= status \
+				<= Retry $mol_button_minor
+					title @ \Try again
+					click? <=> retry? null
 				<= Share $mol_button_copy
 					title @ \Copy link
 					text <= share \
 				<= Create $mol_button_major
 					title @ \Create object
 					click? <=> create? null
+	attempt? 0
+	status_saving @ \Saving to network…
+	status_failed @ \Not delivered to network
+	status_search @ \Searching for object…

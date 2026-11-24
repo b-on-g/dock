@@ -5227,730 +5227,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$bog_dock_card) = class $bog_dock_card extends ($.$mol_link) {
-		icon(){
-			return "";
-		}
-		Icon(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.icon())]);
-			return obj;
-		}
-		name(){
-			return "";
-		}
-		Name(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.name())]);
-			return obj;
-		}
-		descr(){
-			return "";
-		}
-		Hint(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.descr())]);
-			return obj;
-		}
-		Info(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Name()), (this.Hint())]);
-			return obj;
-		}
-		kind(){
-			return "";
-		}
-		Kind(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.kind())]);
-			return obj;
-		}
-		link(){
-			return "";
-		}
-		host(){
-			return "https://b-on-g.github.io/dock/card/";
-		}
-		target(){
-			return "_blank";
-		}
-		sub(){
-			return [
-				(this.Icon()), 
-				(this.Info()), 
-				(this.Kind())
-			];
-		}
-	};
-	($mol_mem(($.$bog_dock_card.prototype), "Icon"));
-	($mol_mem(($.$bog_dock_card.prototype), "Name"));
-	($mol_mem(($.$bog_dock_card.prototype), "Hint"));
-	($mol_mem(($.$bog_dock_card.prototype), "Info"));
-	($mol_mem(($.$bog_dock_card.prototype), "Kind"));
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    /** Reactive Set */
-    class $mol_wire_set extends Set {
-        pub = new $mol_wire_pub;
-        // Accessors
-        has(value) {
-            this.pub.promote();
-            return super.has(value);
-        }
-        entries() {
-            this.pub.promote();
-            return super.entries();
-        }
-        keys() {
-            this.pub.promote();
-            return super.keys();
-        }
-        values() {
-            this.pub.promote();
-            return super.values();
-        }
-        forEach(task, self) {
-            this.pub.promote();
-            super.forEach(task, self);
-        }
-        [Symbol.iterator]() {
-            this.pub.promote();
-            return super[Symbol.iterator]();
-        }
-        get size() {
-            this.pub.promote();
-            return super.size;
-        }
-        // Mutators
-        add(value) {
-            if (super.has(value))
-                return this;
-            super.add(value);
-            this.pub.emit();
-            return this;
-        }
-        delete(value) {
-            const res = super.delete(value);
-            if (res)
-                this.pub.emit();
-            return res;
-        }
-        clear() {
-            if (!super.size)
-                return;
-            super.clear();
-            this.pub.emit();
-        }
-        // Extensions
-        item(val, next) {
-            if (next === undefined)
-                return this.has(val);
-            if (next)
-                this.add(val);
-            else
-                this.delete(val);
-            return next;
-        }
-    }
-    $.$mol_wire_set = $mol_wire_set;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    let $mol_rest_code;
-    (function ($mol_rest_code) {
-        $mol_rest_code[$mol_rest_code["Continue"] = 100] = "Continue";
-        $mol_rest_code[$mol_rest_code["Switching protocols"] = 101] = "Switching protocols";
-        $mol_rest_code[$mol_rest_code["Processing"] = 102] = "Processing";
-        $mol_rest_code[$mol_rest_code["OK"] = 200] = "OK";
-        $mol_rest_code[$mol_rest_code["Created"] = 201] = "Created";
-        $mol_rest_code[$mol_rest_code["Accepted"] = 202] = "Accepted";
-        $mol_rest_code[$mol_rest_code["Non-Authoritative Information"] = 203] = "Non-Authoritative Information";
-        $mol_rest_code[$mol_rest_code["No Content"] = 204] = "No Content";
-        $mol_rest_code[$mol_rest_code["Reset Content"] = 205] = "Reset Content";
-        $mol_rest_code[$mol_rest_code["Partial Content"] = 206] = "Partial Content";
-        $mol_rest_code[$mol_rest_code["Multi Status"] = 207] = "Multi Status";
-        $mol_rest_code[$mol_rest_code["Already Reported"] = 208] = "Already Reported";
-        $mol_rest_code[$mol_rest_code["IM Used"] = 226] = "IM Used";
-        $mol_rest_code[$mol_rest_code["Multiple Choices"] = 300] = "Multiple Choices";
-        $mol_rest_code[$mol_rest_code["Moved Permanently"] = 301] = "Moved Permanently";
-        $mol_rest_code[$mol_rest_code["Found"] = 302] = "Found";
-        $mol_rest_code[$mol_rest_code["See Other"] = 303] = "See Other";
-        $mol_rest_code[$mol_rest_code["Not Modified"] = 304] = "Not Modified";
-        $mol_rest_code[$mol_rest_code["Use Proxy"] = 305] = "Use Proxy";
-        $mol_rest_code[$mol_rest_code["Temporary Redirect"] = 307] = "Temporary Redirect";
-        $mol_rest_code[$mol_rest_code["Bad Request"] = 400] = "Bad Request";
-        $mol_rest_code[$mol_rest_code["Unauthorized"] = 401] = "Unauthorized";
-        $mol_rest_code[$mol_rest_code["Payment Required"] = 402] = "Payment Required";
-        $mol_rest_code[$mol_rest_code["Forbidden"] = 403] = "Forbidden";
-        $mol_rest_code[$mol_rest_code["Not Found"] = 404] = "Not Found";
-        $mol_rest_code[$mol_rest_code["Method Not Allowed"] = 405] = "Method Not Allowed";
-        $mol_rest_code[$mol_rest_code["Not Acceptable"] = 406] = "Not Acceptable";
-        $mol_rest_code[$mol_rest_code["Proxy Authentication Required"] = 407] = "Proxy Authentication Required";
-        $mol_rest_code[$mol_rest_code["Request Timeout"] = 408] = "Request Timeout";
-        $mol_rest_code[$mol_rest_code["Conflict"] = 409] = "Conflict";
-        $mol_rest_code[$mol_rest_code["Gone"] = 410] = "Gone";
-        $mol_rest_code[$mol_rest_code["Length Required"] = 411] = "Length Required";
-        $mol_rest_code[$mol_rest_code["Precondition Failed"] = 412] = "Precondition Failed";
-        $mol_rest_code[$mol_rest_code["Request Entity Too Large"] = 413] = "Request Entity Too Large";
-        $mol_rest_code[$mol_rest_code["Request URI Too Long"] = 414] = "Request URI Too Long";
-        $mol_rest_code[$mol_rest_code["Unsupported Media Type"] = 415] = "Unsupported Media Type";
-        $mol_rest_code[$mol_rest_code["Requested Range Not Satisfiable"] = 416] = "Requested Range Not Satisfiable";
-        $mol_rest_code[$mol_rest_code["Expectation Failed"] = 417] = "Expectation Failed";
-        $mol_rest_code[$mol_rest_code["Teapot"] = 418] = "Teapot";
-        $mol_rest_code[$mol_rest_code["Unprocessable Entity"] = 422] = "Unprocessable Entity";
-        $mol_rest_code[$mol_rest_code["Locked"] = 423] = "Locked";
-        $mol_rest_code[$mol_rest_code["Failed Dependency"] = 424] = "Failed Dependency";
-        $mol_rest_code[$mol_rest_code["Upgrade Required"] = 426] = "Upgrade Required";
-        $mol_rest_code[$mol_rest_code["Precondition Required"] = 428] = "Precondition Required";
-        $mol_rest_code[$mol_rest_code["Too Many Requests"] = 429] = "Too Many Requests";
-        $mol_rest_code[$mol_rest_code["Request Header Fields Too Large"] = 431] = "Request Header Fields Too Large";
-        $mol_rest_code[$mol_rest_code["Unavailable For Legal Reasons"] = 451] = "Unavailable For Legal Reasons";
-        $mol_rest_code[$mol_rest_code["Internal Server Error"] = 500] = "Internal Server Error";
-        $mol_rest_code[$mol_rest_code["Not Implemented"] = 501] = "Not Implemented";
-        $mol_rest_code[$mol_rest_code["Bad Gateway"] = 502] = "Bad Gateway";
-        $mol_rest_code[$mol_rest_code["Service Unavailable"] = 503] = "Service Unavailable";
-        $mol_rest_code[$mol_rest_code["Gateway Timeout"] = 504] = "Gateway Timeout";
-        $mol_rest_code[$mol_rest_code["HTTP Version Not Supported"] = 505] = "HTTP Version Not Supported";
-        $mol_rest_code[$mol_rest_code["Insufficient Storage"] = 507] = "Insufficient Storage";
-        $mol_rest_code[$mol_rest_code["Loop Detected"] = 508] = "Loop Detected";
-        $mol_rest_code[$mol_rest_code["Not Extended"] = 510] = "Not Extended";
-        $mol_rest_code[$mol_rest_code["Network Authentication Required"] = 511] = "Network Authentication Required";
-        $mol_rest_code[$mol_rest_code["Network Read Timeout Error"] = 598] = "Network Read Timeout Error";
-        $mol_rest_code[$mol_rest_code["Network Connect Timeout Error"] = 599] = "Network Connect Timeout Error";
-    })($mol_rest_code = $.$mol_rest_code || ($.$mol_rest_code = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_dom_serialize(node) {
-        const serializer = new $mol_dom_context.XMLSerializer;
-        return serializer.serializeToString(node);
-    }
-    $.$mol_dom_serialize = $mol_dom_serialize;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_rest_port extends $mol_object {
-        send_code(code) { }
-        send_type(mime) { }
-        send_name(name) { }
-        send_prop(name, value) { }
-        origin() { return 'unknown'; }
-        address() { return 'unknown'; }
-        send_data(data) {
-            if (data === null)
-                return this.send_nil();
-            if (typeof data === 'string')
-                return this.send_text(data);
-            if (data instanceof Uint8Array)
-                return this.send_bin(data);
-            if (data instanceof $mol_dom_context.Element)
-                return this.send_dom(data);
-            return this.send_json(data);
-        }
-        send_nil() {
-            this.send_code(204);
-        }
-        send_bin(data) {
-            this.send_code(200);
-            this.send_type('application/octet-stream');
-        }
-        send_text(data) {
-            this.send_code(200);
-            this.send_type('text/plain;charset=utf-8');
-            this.send_bin($mol_charset_encode(data));
-        }
-        send_json(data) {
-            this.send_code(200);
-            this.send_type('application/json');
-            this.send_text(JSON.stringify(data));
-        }
-        send_dom(data) {
-            this.send_code(200);
-            this.send_type('text/html;charset=utf-8');
-            this.send_text($mol_dom_serialize(data));
-        }
-        static make(config) {
-            return super.make(config);
-        }
-    }
-    __decorate([
-        $mol_action
-    ], $mol_rest_port.prototype, "send_data", null);
-    __decorate([
-        $mol_action
-    ], $mol_rest_port.prototype, "send_nil", null);
-    __decorate([
-        $mol_action
-    ], $mol_rest_port.prototype, "send_bin", null);
-    __decorate([
-        $mol_action
-    ], $mol_rest_port.prototype, "send_text", null);
-    __decorate([
-        $mol_action
-    ], $mol_rest_port.prototype, "send_json", null);
-    __decorate([
-        $mol_action
-    ], $mol_rest_port.prototype, "send_dom", null);
-    __decorate([
-        ($mol_action)
-    ], $mol_rest_port, "make", null);
-    $.$mol_rest_port = $mol_rest_port;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_base64_url_encode(buffer) {
-        return buffer.toBase64({ alphabet: 'base64url', omitPadding: true });
-    }
-    $.$mol_base64_url_encode = $mol_base64_url_encode;
-    function $mol_base64_url_decode(str) {
-        return Uint8Array.fromBase64(str, { alphabet: 'base64url' });
-    }
-    $.$mol_base64_url_decode = $mol_base64_url_decode;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_base64_url_encode_node(str) {
-        if (!str)
-            return '';
-        const buf = Buffer.isBuffer(str) ? str : Buffer.from(str);
-        return buf.toString('base64url').replace(/=/g, '');
-    }
-    $.$mol_base64_url_encode_node = $mol_base64_url_encode_node;
-    if (!('toBase64' in Uint8Array.prototype)) {
-        $.$mol_base64_url_encode = $mol_base64_url_encode_node;
-    }
-    function $mol_base64_url_decode_node(str) {
-        // without Uint8Array breaks $mol_compare_deep
-        const buffer = Buffer.from(str, 'base64url');
-        return new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength);
-    }
-    $.$mol_base64_url_decode_node = $mol_base64_url_decode_node;
-    if (!('fromBase64' in Uint8Array)) {
-        $.$mol_base64_url_decode = $mol_base64_url_decode_node;
-    }
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    /** Base class for crypto keys. */
-    class $mol_crypto2_key extends $mol_buffer {
-        static size_str = 43;
-        static size_bin = 32;
-        /** Kakes key from different params. */
-        static from(serial) {
-            if (typeof serial === 'string') {
-                serial = new Uint8Array(serial.match(/.{43}/g)
-                    ?.flatMap(chunk => [...$mol_base64_url_decode(chunk)])
-                    ?? $mol_fail(new Error('Str key too short', { cause: {
-                            min: 43,
-                            real: serial.length,
-                        } })));
-            }
-            return super.from(serial);
-        }
-        /** Array view of public part. */
-        asArray() {
-            const size = this.constructor.size_bin;
-            if (this.byteLength < size) {
-                return $mol_fail(new Error('Bin key too short', { cause: {
-                        min: size,
-                        real: this.byteLength,
-                    } }));
-            }
-            return new Uint8Array(this.buffer, this.byteOffset, size);
-        }
-        /** String representation of public part. */
-        toString() {
-            return $mol_base64_url_encode(this.asArray());
-        }
-    }
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_key.prototype, "toString", null);
-    $.$mol_crypto2_key = $mol_crypto2_key;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $.$mol_crypto_native = $node.crypto.webcrypto;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    /** Derived debuggable error with stack */
-    function $mol_crypto_restack(error) {
-        error = new Error(error instanceof Error ? error.message : String(error), { cause: error });
-        $mol_fail_hidden(error);
-    }
-    $.$mol_crypto_restack = $mol_crypto_restack;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    /** Ed25519 public key for sign verifying. */
-    class $mol_crypto2_auditor extends $mol_crypto2_key {
-        /** Native WebAPI public key. */
-        async native() {
-            return $mol_crypto_native.subtle.importKey('jwk', {
-                crv: "Ed25519",
-                ext: true,
-                key_ops: ['verify'],
-                kty: "OKP",
-                x: this.toString(),
-            }, "Ed25519", Boolean('extractable'), ['verify']).catch($mol_crypto_restack);
-        }
-        /** Verifies signature of data. */
-        async verify(data, sign) {
-            return await $mol_crypto_native.subtle.verify("Ed25519", await this.native(), sign, data).catch($mol_crypto_restack);
-        }
-    }
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_auditor.prototype, "native", null);
-    $.$mol_crypto2_auditor = $mol_crypto2_auditor;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    /** x25519 public key for data encryption. */
-    class $mol_crypto2_socket extends $mol_crypto2_key {
-        /** Native WebAPI public key. */
-        async native() {
-            return await $mol_crypto_native.subtle.importKey('jwk', {
-                crv: 'X25519',
-                ext: true,
-                kty: 'OKP',
-                key_ops: [],
-                x: this.toString(),
-            }, "X25519", true, []).catch($mol_crypto_restack);
-        }
-    }
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_socket.prototype, "native", null);
-    $.$mol_crypto2_socket = $mol_crypto2_socket;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    /** Compose public key for verifying and encryption, based on Curve25519. */
-    class $mol_crypto2_public extends $mol_crypto2_key {
-        static size_str = 86;
-        static size_bin = 64;
-        /** Return Auditor part. */
-        auditor() {
-            return $mol_crypto2_auditor.from(this.asArray().subarray(0, 32));
-        }
-        /** Return Socket part. */
-        socket() {
-            return $mol_crypto2_socket.from(this.asArray().subarray(32, 64));
-        }
-        toString() {
-            return this.auditor().toString() + this.socket().toString();
-        }
-    }
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_public.prototype, "auditor", null);
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_public.prototype, "socket", null);
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_public.prototype, "toString", null);
-    $.$mol_crypto2_public = $mol_crypto2_public;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    /** Ed25519 private key for data signing. */
-    class $mol_crypto2_signer extends $mol_crypto2_auditor {
-        static size_sign = 64;
-        /** Generates new Signer. */
-        static async generate() {
-            const pair = await $mol_crypto_native.subtle.generateKey("Ed25519", Boolean('extractable'), ['sign', 'verify']).catch($mol_crypto_restack);
-            const { x, d } = await $mol_crypto_native.subtle.exportKey('jwk', pair.privateKey).catch($mol_crypto_restack);
-            return this.from(x + d);
-        }
-        /** Native WebAPI private key. */
-        async nativePrivate() {
-            return await $mol_crypto_native.subtle.importKey('jwk', {
-                crv: "Ed25519",
-                ext: true,
-                key_ops: ['sign'],
-                kty: "OKP",
-                x: this.toString(),
-                d: this.toStringPrivate(),
-            }, "Ed25519", Boolean('extractable'), ['sign']).catch($mol_crypto_restack);
-        }
-        /** Array view of private part. */
-        asArrayPrivate() {
-            return new Uint8Array(this.buffer, this.byteOffset + 32, 32);
-        }
-        /** String representation of private part. */
-        toStringPrivate() {
-            return $mol_base64_url_encode(this.asArrayPrivate());
-        }
-        /** Returns Auditor from this Signer. */
-        auditor() {
-            return $mol_crypto2_auditor.from(this.asArray());
-        }
-        /** Makes Signature for data. */
-        async sign(data) {
-            return new Uint8Array(await $mol_crypto_native.subtle.sign("Ed25519", await this.nativePrivate(), data).catch($mol_crypto_restack));
-        }
-    }
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_signer.prototype, "nativePrivate", null);
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_signer.prototype, "toStringPrivate", null);
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_signer.prototype, "auditor", null);
-    $.$mol_crypto2_signer = $mol_crypto2_signer;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    /** 16 unique bytes. */
-    function $mol_crypto2_nonce() {
-        return $mol_crypto_native.getRandomValues(new Uint8Array(16));
-    }
-    $.$mol_crypto2_nonce = $mol_crypto2_nonce;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    /** Symmetric AES-CTR secret. */
-    class $mol_crypto2_secret extends $mol_buffer {
-        static size = 16;
-        /** Makes new random secret. */
-        static make() {
-            return this.from($mol_crypto2_nonce());
-        }
-        /** Makes from string or buffer view. */
-        static from(serial) {
-            if (typeof serial === 'string')
-                serial = $mol_base64_url_decode(serial);
-            if (serial.byteLength !== $mol_crypto2_secret.size) {
-                return $mol_fail(new RangeError('Wrong key size', { cause: { size: serial.byteLength } }));
-            }
-            if (!(serial instanceof Uint8Array)) {
-                serial = new Uint8Array(serial.buffer, serial.byteOffset, serial.byteLength);
-            }
-            return super.from(serial);
-        }
-        static async from_native(native) {
-            const buffer = await $mol_crypto_native.subtle.exportKey('raw', native).catch($mol_crypto_restack);
-            const secret = this.from(new Uint8Array(buffer));
-            secret._native = native;
-            return secret;
-        }
-        toString() {
-            return $mol_base64_url_encode(this.asArray());
-        }
-        _native;
-        /** Native crypto secret. */
-        async native() {
-            return this._native ?? (this._native = await $mol_crypto_native.subtle.importKey('raw', // format
-            this, // buffer source
-            'AES-CTR', // algorithm
-            true, // extractable
-            ['encrypt', 'decrypt']).catch($mol_crypto_restack));
-        }
-        /** Encrypts data without changing its length. */
-        async encrypt(open, nonce) {
-            return new Uint8Array(await $mol_crypto_native.subtle.encrypt({ name: 'AES-CTR', counter: nonce, length: 64 }, await this.native(), open).catch($mol_crypto_restack));
-        }
-        /** Decrypts data without changing its length. */
-        async decrypt(closed, nonce) {
-            return new Uint8Array(await $mol_crypto_native.subtle.decrypt({ name: 'AES-CTR', counter: nonce, length: 64 }, await this.native(), closed).catch($mol_crypto_restack));
-        }
-    }
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_secret.prototype, "toString", null);
-    $.$mol_crypto2_secret = $mol_crypto2_secret;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    /** x25519 private key for data encryption. */
-    class $mol_crypto2_cipher extends $mol_crypto2_socket {
-        static size_secret = 16;
-        /** Generates new Cipher. */
-        static async generate() {
-            const pair = await $mol_crypto_native.subtle.generateKey("X25519", Boolean('extractable'), ['deriveKey']).catch($mol_crypto_restack);
-            const { x, d } = await $mol_crypto_native.subtle.exportKey('jwk', pair.privateKey).catch($mol_crypto_restack);
-            return this.from(x + d);
-        }
-        /** Native WebAPI private key. */
-        async nativePrivate() {
-            return $mol_crypto_native.subtle.importKey('jwk', {
-                crv: 'X25519',
-                ext: true,
-                kty: 'OKP',
-                key_ops: ['deriveKey', 'deriveBits'],
-                x: this.toString(),
-                d: this.toStringPrivate(),
-            }, "X25519", Boolean('extractable'), ['deriveKey', 'deriveBits']).catch($mol_crypto_restack);
-        }
-        /** Array view of private part. */
-        asArrayPrivate() {
-            return new Uint8Array(this.buffer, this.byteOffset + 32, 32);
-        }
-        /** String representation of private part. */
-        toStringPrivate() {
-            return $mol_base64_url_encode(this.asArrayPrivate());
-        }
-        /** Returns Socket from this Chipher. */
-        socket() {
-            return $mol_crypto2_socket.from(this.asArray());
-        }
-        /** Makes shared secret for combination of Chiper and Socket. */
-        async secret(pub) {
-            return $mol_crypto2_secret.from(new Uint8Array(await $mol_crypto_native.subtle.deriveBits({
-                name: "X25519",
-                public: await pub.native(),
-            }, await this.nativePrivate(), $mol_crypto2_secret.size * 8).catch($mol_crypto_restack)));
-        }
-    }
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_cipher.prototype, "nativePrivate", null);
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_cipher.prototype, "toStringPrivate", null);
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_cipher.prototype, "socket", null);
-    $.$mol_crypto2_cipher = $mol_crypto2_cipher;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    /** Compose private key for signing and encryption, based on Curve25519. */
-    class $mol_crypto2_private extends $mol_crypto2_public {
-        /** Generates new private key. */
-        static async generate() {
-            const [signer, cipher] = await Promise.all([
-                $mol_crypto2_signer.generate(),
-                $mol_crypto2_cipher.generate(),
-            ]);
-            const key = $mol_crypto2_private.from($mol_crypto2_public.size_bin + $mol_crypto2_private.size_bin);
-            key.asArray().set(signer.asArray(), 0);
-            key.asArray().set(cipher.asArray(), 32);
-            key.asArrayPrivate().set(signer.asArrayPrivate(), 0);
-            key.asArrayPrivate().set(cipher.asArrayPrivate(), 32);
-            return key;
-        }
-        /** Return Signer part. */
-        signer() {
-            const signer = $mol_crypto2_signer.from($mol_crypto2_auditor.size_bin + $mol_crypto2_signer.size_bin);
-            signer.asArray().set(this.asArray().subarray(0, 32));
-            signer.asArrayPrivate().set(this.asArrayPrivate().subarray(0, 32));
-            return signer;
-        }
-        /** Return Cipher part. */
-        cipher() {
-            const cipher = $mol_crypto2_cipher.from($mol_crypto2_socket.size_bin + $mol_crypto2_cipher.size_bin);
-            cipher.asArray().set(this.asArray().subarray(32, 64));
-            cipher.asArrayPrivate().set(this.asArrayPrivate().subarray(32, 64));
-            return cipher;
-        }
-        /** Return Public part. */
-        public() {
-            return $mol_crypto2_public.from(this.asArray());
-        }
-        /** Array view of private part. */
-        asArrayPrivate() {
-            return new Uint8Array(this.buffer, this.byteOffset + 64, 64);
-        }
-        /** String representation of private part. */
-        toStringPrivate() {
-            return this.signer().toStringPrivate() + this.cipher().toStringPrivate();
-        }
-    }
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_private.prototype, "signer", null);
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_private.prototype, "cipher", null);
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_private.prototype, "public", null);
-    __decorate([
-        $mol_memo.method
-    ], $mol_crypto2_private.prototype, "toStringPrivate", null);
-    $.$mol_crypto2_private = $mol_crypto2_private;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    /**
-     * Disable reaping of current subscriber
-     */
-    function $mol_wire_solid() {
-        let current = $mol_wire_auto();
-        if (current.temp)
-            current = current.host;
-        if (current.reap !== nothing) {
-            current?.sub_on(sub, sub.data.length);
-        }
-        current.reap = nothing;
-    }
-    $.$mol_wire_solid = $mol_wire_solid;
-    const nothing = () => { };
-    const sub = new $mol_wire_pub_sub;
-})($ || ($ = {}));
-
-;
 "use strict";
 var $;
 (function ($) {
@@ -5990,6 +5266,27 @@ var $;
         }
     }
     $.$mol_storage = $mol_storage;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    /**
+     * Disable reaping of current subscriber
+     */
+    function $mol_wire_solid() {
+        let current = $mol_wire_auto();
+        if (current.temp)
+            current = current.host;
+        if (current.reap !== nothing) {
+            current?.sub_on(sub, sub.data.length);
+        }
+        current.reap = nothing;
+    }
+    $.$mol_wire_solid = $mol_wire_solid;
+    const nothing = () => { };
+    const sub = new $mol_wire_pub_sub;
 })($ || ($ = {}));
 
 ;
@@ -6934,6 +6231,799 @@ var $;
     ], $mol_state_local_node, "value", null);
     $.$mol_state_local_node = $mol_state_local_node;
     $.$mol_state_local = $mol_state_local_node;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    /**
+     * Localisation in $mol framework
+     * @see https://mol.hyoo.ru/#!section=docs/=s5aqnb_odub8l
+     */
+    class $mol_locale extends $mol_object {
+        static lang_default() {
+            return 'en';
+        }
+        static lang(next) {
+            return this.$.$mol_state_local.value('locale', next) || $mol_dom_context.navigator.language.replace(/-.*/, '') || this.lang_default();
+        }
+        static langs_rtl() {
+            return ['ar', 'he', 'fa', 'ur', 'yi', 'ps', 'ug', 'sd'];
+        }
+        static direction() {
+            const lang = this.lang();
+            let direction;
+            try {
+                direction = new Intl.Locale(lang).getTextInfo().direction;
+            }
+            catch (e) {
+                $mol_fail_log(e);
+            }
+            return direction ?? (this.langs_rtl().includes(lang) ? 'rtl' : 'ltr');
+        }
+        static source(lang) {
+            return JSON.parse(this.$.$mol_file.relative(`web.locale=${lang}.json`).text().toString());
+        }
+        static texts(lang, next) {
+            if (next)
+                return next;
+            try {
+                return this.source(lang).valueOf();
+            }
+            catch (error) {
+                if ($mol_fail_catch(error)) {
+                    const def = this.lang_default();
+                    if (lang === def)
+                        throw error;
+                }
+            }
+            return {};
+        }
+        static text(key) {
+            const lang = this.lang();
+            const target = this.texts(lang)[key];
+            if (target)
+                return target;
+            this.warn(key);
+            const en = this.texts('en')[key];
+            if (!en)
+                return key;
+            return en;
+        }
+        static warn(key) {
+            console.warn(`Not translated to "${this.lang()}": ${key}`);
+            return null;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $mol_locale, "lang_default", null);
+    __decorate([
+        $mol_mem
+    ], $mol_locale, "lang", null);
+    __decorate([
+        $mol_mem
+    ], $mol_locale, "direction", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "source", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "texts", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "text", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "warn", null);
+    $.$mol_locale = $mol_locale;
+})($ || ($ = {}));
+
+;
+	($.$bog_dock_card) = class $bog_dock_card extends ($.$mol_link) {
+		icon(){
+			return "";
+		}
+		Icon(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.icon())]);
+			return obj;
+		}
+		name(){
+			return "";
+		}
+		Name(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.name())]);
+			return obj;
+		}
+		descr(){
+			return "";
+		}
+		Hint(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.descr())]);
+			return obj;
+		}
+		Info(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Name()), (this.Hint())]);
+			return obj;
+		}
+		kind(){
+			return "";
+		}
+		Kind(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.kind())]);
+			return obj;
+		}
+		link(){
+			return "";
+		}
+		host(){
+			return "https://b-on-g.github.io/dock/card/";
+		}
+		profile_kind(){
+			return (this.$.$mol_locale.text("$bog_dock_card_profile_kind"));
+		}
+		target(){
+			return "_blank";
+		}
+		sub(){
+			return [
+				(this.Icon()), 
+				(this.Info()), 
+				(this.Kind())
+			];
+		}
+	};
+	($mol_mem(($.$bog_dock_card.prototype), "Icon"));
+	($mol_mem(($.$bog_dock_card.prototype), "Name"));
+	($mol_mem(($.$bog_dock_card.prototype), "Hint"));
+	($mol_mem(($.$bog_dock_card.prototype), "Info"));
+	($mol_mem(($.$bog_dock_card.prototype), "Kind"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    /** Reactive Set */
+    class $mol_wire_set extends Set {
+        pub = new $mol_wire_pub;
+        // Accessors
+        has(value) {
+            this.pub.promote();
+            return super.has(value);
+        }
+        entries() {
+            this.pub.promote();
+            return super.entries();
+        }
+        keys() {
+            this.pub.promote();
+            return super.keys();
+        }
+        values() {
+            this.pub.promote();
+            return super.values();
+        }
+        forEach(task, self) {
+            this.pub.promote();
+            super.forEach(task, self);
+        }
+        [Symbol.iterator]() {
+            this.pub.promote();
+            return super[Symbol.iterator]();
+        }
+        get size() {
+            this.pub.promote();
+            return super.size;
+        }
+        // Mutators
+        add(value) {
+            if (super.has(value))
+                return this;
+            super.add(value);
+            this.pub.emit();
+            return this;
+        }
+        delete(value) {
+            const res = super.delete(value);
+            if (res)
+                this.pub.emit();
+            return res;
+        }
+        clear() {
+            if (!super.size)
+                return;
+            super.clear();
+            this.pub.emit();
+        }
+        // Extensions
+        item(val, next) {
+            if (next === undefined)
+                return this.has(val);
+            if (next)
+                this.add(val);
+            else
+                this.delete(val);
+            return next;
+        }
+    }
+    $.$mol_wire_set = $mol_wire_set;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    let $mol_rest_code;
+    (function ($mol_rest_code) {
+        $mol_rest_code[$mol_rest_code["Continue"] = 100] = "Continue";
+        $mol_rest_code[$mol_rest_code["Switching protocols"] = 101] = "Switching protocols";
+        $mol_rest_code[$mol_rest_code["Processing"] = 102] = "Processing";
+        $mol_rest_code[$mol_rest_code["OK"] = 200] = "OK";
+        $mol_rest_code[$mol_rest_code["Created"] = 201] = "Created";
+        $mol_rest_code[$mol_rest_code["Accepted"] = 202] = "Accepted";
+        $mol_rest_code[$mol_rest_code["Non-Authoritative Information"] = 203] = "Non-Authoritative Information";
+        $mol_rest_code[$mol_rest_code["No Content"] = 204] = "No Content";
+        $mol_rest_code[$mol_rest_code["Reset Content"] = 205] = "Reset Content";
+        $mol_rest_code[$mol_rest_code["Partial Content"] = 206] = "Partial Content";
+        $mol_rest_code[$mol_rest_code["Multi Status"] = 207] = "Multi Status";
+        $mol_rest_code[$mol_rest_code["Already Reported"] = 208] = "Already Reported";
+        $mol_rest_code[$mol_rest_code["IM Used"] = 226] = "IM Used";
+        $mol_rest_code[$mol_rest_code["Multiple Choices"] = 300] = "Multiple Choices";
+        $mol_rest_code[$mol_rest_code["Moved Permanently"] = 301] = "Moved Permanently";
+        $mol_rest_code[$mol_rest_code["Found"] = 302] = "Found";
+        $mol_rest_code[$mol_rest_code["See Other"] = 303] = "See Other";
+        $mol_rest_code[$mol_rest_code["Not Modified"] = 304] = "Not Modified";
+        $mol_rest_code[$mol_rest_code["Use Proxy"] = 305] = "Use Proxy";
+        $mol_rest_code[$mol_rest_code["Temporary Redirect"] = 307] = "Temporary Redirect";
+        $mol_rest_code[$mol_rest_code["Bad Request"] = 400] = "Bad Request";
+        $mol_rest_code[$mol_rest_code["Unauthorized"] = 401] = "Unauthorized";
+        $mol_rest_code[$mol_rest_code["Payment Required"] = 402] = "Payment Required";
+        $mol_rest_code[$mol_rest_code["Forbidden"] = 403] = "Forbidden";
+        $mol_rest_code[$mol_rest_code["Not Found"] = 404] = "Not Found";
+        $mol_rest_code[$mol_rest_code["Method Not Allowed"] = 405] = "Method Not Allowed";
+        $mol_rest_code[$mol_rest_code["Not Acceptable"] = 406] = "Not Acceptable";
+        $mol_rest_code[$mol_rest_code["Proxy Authentication Required"] = 407] = "Proxy Authentication Required";
+        $mol_rest_code[$mol_rest_code["Request Timeout"] = 408] = "Request Timeout";
+        $mol_rest_code[$mol_rest_code["Conflict"] = 409] = "Conflict";
+        $mol_rest_code[$mol_rest_code["Gone"] = 410] = "Gone";
+        $mol_rest_code[$mol_rest_code["Length Required"] = 411] = "Length Required";
+        $mol_rest_code[$mol_rest_code["Precondition Failed"] = 412] = "Precondition Failed";
+        $mol_rest_code[$mol_rest_code["Request Entity Too Large"] = 413] = "Request Entity Too Large";
+        $mol_rest_code[$mol_rest_code["Request URI Too Long"] = 414] = "Request URI Too Long";
+        $mol_rest_code[$mol_rest_code["Unsupported Media Type"] = 415] = "Unsupported Media Type";
+        $mol_rest_code[$mol_rest_code["Requested Range Not Satisfiable"] = 416] = "Requested Range Not Satisfiable";
+        $mol_rest_code[$mol_rest_code["Expectation Failed"] = 417] = "Expectation Failed";
+        $mol_rest_code[$mol_rest_code["Teapot"] = 418] = "Teapot";
+        $mol_rest_code[$mol_rest_code["Unprocessable Entity"] = 422] = "Unprocessable Entity";
+        $mol_rest_code[$mol_rest_code["Locked"] = 423] = "Locked";
+        $mol_rest_code[$mol_rest_code["Failed Dependency"] = 424] = "Failed Dependency";
+        $mol_rest_code[$mol_rest_code["Upgrade Required"] = 426] = "Upgrade Required";
+        $mol_rest_code[$mol_rest_code["Precondition Required"] = 428] = "Precondition Required";
+        $mol_rest_code[$mol_rest_code["Too Many Requests"] = 429] = "Too Many Requests";
+        $mol_rest_code[$mol_rest_code["Request Header Fields Too Large"] = 431] = "Request Header Fields Too Large";
+        $mol_rest_code[$mol_rest_code["Unavailable For Legal Reasons"] = 451] = "Unavailable For Legal Reasons";
+        $mol_rest_code[$mol_rest_code["Internal Server Error"] = 500] = "Internal Server Error";
+        $mol_rest_code[$mol_rest_code["Not Implemented"] = 501] = "Not Implemented";
+        $mol_rest_code[$mol_rest_code["Bad Gateway"] = 502] = "Bad Gateway";
+        $mol_rest_code[$mol_rest_code["Service Unavailable"] = 503] = "Service Unavailable";
+        $mol_rest_code[$mol_rest_code["Gateway Timeout"] = 504] = "Gateway Timeout";
+        $mol_rest_code[$mol_rest_code["HTTP Version Not Supported"] = 505] = "HTTP Version Not Supported";
+        $mol_rest_code[$mol_rest_code["Insufficient Storage"] = 507] = "Insufficient Storage";
+        $mol_rest_code[$mol_rest_code["Loop Detected"] = 508] = "Loop Detected";
+        $mol_rest_code[$mol_rest_code["Not Extended"] = 510] = "Not Extended";
+        $mol_rest_code[$mol_rest_code["Network Authentication Required"] = 511] = "Network Authentication Required";
+        $mol_rest_code[$mol_rest_code["Network Read Timeout Error"] = 598] = "Network Read Timeout Error";
+        $mol_rest_code[$mol_rest_code["Network Connect Timeout Error"] = 599] = "Network Connect Timeout Error";
+    })($mol_rest_code = $.$mol_rest_code || ($.$mol_rest_code = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_dom_serialize(node) {
+        const serializer = new $mol_dom_context.XMLSerializer;
+        return serializer.serializeToString(node);
+    }
+    $.$mol_dom_serialize = $mol_dom_serialize;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_rest_port extends $mol_object {
+        send_code(code) { }
+        send_type(mime) { }
+        send_name(name) { }
+        send_prop(name, value) { }
+        origin() { return 'unknown'; }
+        address() { return 'unknown'; }
+        send_data(data) {
+            if (data === null)
+                return this.send_nil();
+            if (typeof data === 'string')
+                return this.send_text(data);
+            if (data instanceof Uint8Array)
+                return this.send_bin(data);
+            if (data instanceof $mol_dom_context.Element)
+                return this.send_dom(data);
+            return this.send_json(data);
+        }
+        send_nil() {
+            this.send_code(204);
+        }
+        send_bin(data) {
+            this.send_code(200);
+            this.send_type('application/octet-stream');
+        }
+        send_text(data) {
+            this.send_code(200);
+            this.send_type('text/plain;charset=utf-8');
+            this.send_bin($mol_charset_encode(data));
+        }
+        send_json(data) {
+            this.send_code(200);
+            this.send_type('application/json');
+            this.send_text(JSON.stringify(data));
+        }
+        send_dom(data) {
+            this.send_code(200);
+            this.send_type('text/html;charset=utf-8');
+            this.send_text($mol_dom_serialize(data));
+        }
+        static make(config) {
+            return super.make(config);
+        }
+    }
+    __decorate([
+        $mol_action
+    ], $mol_rest_port.prototype, "send_data", null);
+    __decorate([
+        $mol_action
+    ], $mol_rest_port.prototype, "send_nil", null);
+    __decorate([
+        $mol_action
+    ], $mol_rest_port.prototype, "send_bin", null);
+    __decorate([
+        $mol_action
+    ], $mol_rest_port.prototype, "send_text", null);
+    __decorate([
+        $mol_action
+    ], $mol_rest_port.prototype, "send_json", null);
+    __decorate([
+        $mol_action
+    ], $mol_rest_port.prototype, "send_dom", null);
+    __decorate([
+        ($mol_action)
+    ], $mol_rest_port, "make", null);
+    $.$mol_rest_port = $mol_rest_port;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_base64_url_encode(buffer) {
+        return buffer.toBase64({ alphabet: 'base64url', omitPadding: true });
+    }
+    $.$mol_base64_url_encode = $mol_base64_url_encode;
+    function $mol_base64_url_decode(str) {
+        return Uint8Array.fromBase64(str, { alphabet: 'base64url' });
+    }
+    $.$mol_base64_url_decode = $mol_base64_url_decode;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_base64_url_encode_node(str) {
+        if (!str)
+            return '';
+        const buf = Buffer.isBuffer(str) ? str : Buffer.from(str);
+        return buf.toString('base64url').replace(/=/g, '');
+    }
+    $.$mol_base64_url_encode_node = $mol_base64_url_encode_node;
+    if (!('toBase64' in Uint8Array.prototype)) {
+        $.$mol_base64_url_encode = $mol_base64_url_encode_node;
+    }
+    function $mol_base64_url_decode_node(str) {
+        // without Uint8Array breaks $mol_compare_deep
+        const buffer = Buffer.from(str, 'base64url');
+        return new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength);
+    }
+    $.$mol_base64_url_decode_node = $mol_base64_url_decode_node;
+    if (!('fromBase64' in Uint8Array)) {
+        $.$mol_base64_url_decode = $mol_base64_url_decode_node;
+    }
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    /** Base class for crypto keys. */
+    class $mol_crypto2_key extends $mol_buffer {
+        static size_str = 43;
+        static size_bin = 32;
+        /** Kakes key from different params. */
+        static from(serial) {
+            if (typeof serial === 'string') {
+                serial = new Uint8Array(serial.match(/.{43}/g)
+                    ?.flatMap(chunk => [...$mol_base64_url_decode(chunk)])
+                    ?? $mol_fail(new Error('Str key too short', { cause: {
+                            min: 43,
+                            real: serial.length,
+                        } })));
+            }
+            return super.from(serial);
+        }
+        /** Array view of public part. */
+        asArray() {
+            const size = this.constructor.size_bin;
+            if (this.byteLength < size) {
+                return $mol_fail(new Error('Bin key too short', { cause: {
+                        min: size,
+                        real: this.byteLength,
+                    } }));
+            }
+            return new Uint8Array(this.buffer, this.byteOffset, size);
+        }
+        /** String representation of public part. */
+        toString() {
+            return $mol_base64_url_encode(this.asArray());
+        }
+    }
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_key.prototype, "toString", null);
+    $.$mol_crypto2_key = $mol_crypto2_key;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $.$mol_crypto_native = $node.crypto.webcrypto;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    /** Derived debuggable error with stack */
+    function $mol_crypto_restack(error) {
+        error = new Error(error instanceof Error ? error.message : String(error), { cause: error });
+        $mol_fail_hidden(error);
+    }
+    $.$mol_crypto_restack = $mol_crypto_restack;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    /** Ed25519 public key for sign verifying. */
+    class $mol_crypto2_auditor extends $mol_crypto2_key {
+        /** Native WebAPI public key. */
+        async native() {
+            return $mol_crypto_native.subtle.importKey('jwk', {
+                crv: "Ed25519",
+                ext: true,
+                key_ops: ['verify'],
+                kty: "OKP",
+                x: this.toString(),
+            }, "Ed25519", Boolean('extractable'), ['verify']).catch($mol_crypto_restack);
+        }
+        /** Verifies signature of data. */
+        async verify(data, sign) {
+            return await $mol_crypto_native.subtle.verify("Ed25519", await this.native(), sign, data).catch($mol_crypto_restack);
+        }
+    }
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_auditor.prototype, "native", null);
+    $.$mol_crypto2_auditor = $mol_crypto2_auditor;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    /** x25519 public key for data encryption. */
+    class $mol_crypto2_socket extends $mol_crypto2_key {
+        /** Native WebAPI public key. */
+        async native() {
+            return await $mol_crypto_native.subtle.importKey('jwk', {
+                crv: 'X25519',
+                ext: true,
+                kty: 'OKP',
+                key_ops: [],
+                x: this.toString(),
+            }, "X25519", true, []).catch($mol_crypto_restack);
+        }
+    }
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_socket.prototype, "native", null);
+    $.$mol_crypto2_socket = $mol_crypto2_socket;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    /** Compose public key for verifying and encryption, based on Curve25519. */
+    class $mol_crypto2_public extends $mol_crypto2_key {
+        static size_str = 86;
+        static size_bin = 64;
+        /** Return Auditor part. */
+        auditor() {
+            return $mol_crypto2_auditor.from(this.asArray().subarray(0, 32));
+        }
+        /** Return Socket part. */
+        socket() {
+            return $mol_crypto2_socket.from(this.asArray().subarray(32, 64));
+        }
+        toString() {
+            return this.auditor().toString() + this.socket().toString();
+        }
+    }
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_public.prototype, "auditor", null);
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_public.prototype, "socket", null);
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_public.prototype, "toString", null);
+    $.$mol_crypto2_public = $mol_crypto2_public;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    /** Ed25519 private key for data signing. */
+    class $mol_crypto2_signer extends $mol_crypto2_auditor {
+        static size_sign = 64;
+        /** Generates new Signer. */
+        static async generate() {
+            const pair = await $mol_crypto_native.subtle.generateKey("Ed25519", Boolean('extractable'), ['sign', 'verify']).catch($mol_crypto_restack);
+            const { x, d } = await $mol_crypto_native.subtle.exportKey('jwk', pair.privateKey).catch($mol_crypto_restack);
+            return this.from(x + d);
+        }
+        /** Native WebAPI private key. */
+        async nativePrivate() {
+            return await $mol_crypto_native.subtle.importKey('jwk', {
+                crv: "Ed25519",
+                ext: true,
+                key_ops: ['sign'],
+                kty: "OKP",
+                x: this.toString(),
+                d: this.toStringPrivate(),
+            }, "Ed25519", Boolean('extractable'), ['sign']).catch($mol_crypto_restack);
+        }
+        /** Array view of private part. */
+        asArrayPrivate() {
+            return new Uint8Array(this.buffer, this.byteOffset + 32, 32);
+        }
+        /** String representation of private part. */
+        toStringPrivate() {
+            return $mol_base64_url_encode(this.asArrayPrivate());
+        }
+        /** Returns Auditor from this Signer. */
+        auditor() {
+            return $mol_crypto2_auditor.from(this.asArray());
+        }
+        /** Makes Signature for data. */
+        async sign(data) {
+            return new Uint8Array(await $mol_crypto_native.subtle.sign("Ed25519", await this.nativePrivate(), data).catch($mol_crypto_restack));
+        }
+    }
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_signer.prototype, "nativePrivate", null);
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_signer.prototype, "toStringPrivate", null);
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_signer.prototype, "auditor", null);
+    $.$mol_crypto2_signer = $mol_crypto2_signer;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    /** 16 unique bytes. */
+    function $mol_crypto2_nonce() {
+        return $mol_crypto_native.getRandomValues(new Uint8Array(16));
+    }
+    $.$mol_crypto2_nonce = $mol_crypto2_nonce;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    /** Symmetric AES-CTR secret. */
+    class $mol_crypto2_secret extends $mol_buffer {
+        static size = 16;
+        /** Makes new random secret. */
+        static make() {
+            return this.from($mol_crypto2_nonce());
+        }
+        /** Makes from string or buffer view. */
+        static from(serial) {
+            if (typeof serial === 'string')
+                serial = $mol_base64_url_decode(serial);
+            if (serial.byteLength !== $mol_crypto2_secret.size) {
+                return $mol_fail(new RangeError('Wrong key size', { cause: { size: serial.byteLength } }));
+            }
+            if (!(serial instanceof Uint8Array)) {
+                serial = new Uint8Array(serial.buffer, serial.byteOffset, serial.byteLength);
+            }
+            return super.from(serial);
+        }
+        static async from_native(native) {
+            const buffer = await $mol_crypto_native.subtle.exportKey('raw', native).catch($mol_crypto_restack);
+            const secret = this.from(new Uint8Array(buffer));
+            secret._native = native;
+            return secret;
+        }
+        toString() {
+            return $mol_base64_url_encode(this.asArray());
+        }
+        _native;
+        /** Native crypto secret. */
+        async native() {
+            return this._native ?? (this._native = await $mol_crypto_native.subtle.importKey('raw', // format
+            this, // buffer source
+            'AES-CTR', // algorithm
+            true, // extractable
+            ['encrypt', 'decrypt']).catch($mol_crypto_restack));
+        }
+        /** Encrypts data without changing its length. */
+        async encrypt(open, nonce) {
+            return new Uint8Array(await $mol_crypto_native.subtle.encrypt({ name: 'AES-CTR', counter: nonce, length: 64 }, await this.native(), open).catch($mol_crypto_restack));
+        }
+        /** Decrypts data without changing its length. */
+        async decrypt(closed, nonce) {
+            return new Uint8Array(await $mol_crypto_native.subtle.decrypt({ name: 'AES-CTR', counter: nonce, length: 64 }, await this.native(), closed).catch($mol_crypto_restack));
+        }
+    }
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_secret.prototype, "toString", null);
+    $.$mol_crypto2_secret = $mol_crypto2_secret;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    /** x25519 private key for data encryption. */
+    class $mol_crypto2_cipher extends $mol_crypto2_socket {
+        static size_secret = 16;
+        /** Generates new Cipher. */
+        static async generate() {
+            const pair = await $mol_crypto_native.subtle.generateKey("X25519", Boolean('extractable'), ['deriveKey']).catch($mol_crypto_restack);
+            const { x, d } = await $mol_crypto_native.subtle.exportKey('jwk', pair.privateKey).catch($mol_crypto_restack);
+            return this.from(x + d);
+        }
+        /** Native WebAPI private key. */
+        async nativePrivate() {
+            return $mol_crypto_native.subtle.importKey('jwk', {
+                crv: 'X25519',
+                ext: true,
+                kty: 'OKP',
+                key_ops: ['deriveKey', 'deriveBits'],
+                x: this.toString(),
+                d: this.toStringPrivate(),
+            }, "X25519", Boolean('extractable'), ['deriveKey', 'deriveBits']).catch($mol_crypto_restack);
+        }
+        /** Array view of private part. */
+        asArrayPrivate() {
+            return new Uint8Array(this.buffer, this.byteOffset + 32, 32);
+        }
+        /** String representation of private part. */
+        toStringPrivate() {
+            return $mol_base64_url_encode(this.asArrayPrivate());
+        }
+        /** Returns Socket from this Chipher. */
+        socket() {
+            return $mol_crypto2_socket.from(this.asArray());
+        }
+        /** Makes shared secret for combination of Chiper and Socket. */
+        async secret(pub) {
+            return $mol_crypto2_secret.from(new Uint8Array(await $mol_crypto_native.subtle.deriveBits({
+                name: "X25519",
+                public: await pub.native(),
+            }, await this.nativePrivate(), $mol_crypto2_secret.size * 8).catch($mol_crypto_restack)));
+        }
+    }
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_cipher.prototype, "nativePrivate", null);
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_cipher.prototype, "toStringPrivate", null);
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_cipher.prototype, "socket", null);
+    $.$mol_crypto2_cipher = $mol_crypto2_cipher;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    /** Compose private key for signing and encryption, based on Curve25519. */
+    class $mol_crypto2_private extends $mol_crypto2_public {
+        /** Generates new private key. */
+        static async generate() {
+            const [signer, cipher] = await Promise.all([
+                $mol_crypto2_signer.generate(),
+                $mol_crypto2_cipher.generate(),
+            ]);
+            const key = $mol_crypto2_private.from($mol_crypto2_public.size_bin + $mol_crypto2_private.size_bin);
+            key.asArray().set(signer.asArray(), 0);
+            key.asArray().set(cipher.asArray(), 32);
+            key.asArrayPrivate().set(signer.asArrayPrivate(), 0);
+            key.asArrayPrivate().set(cipher.asArrayPrivate(), 32);
+            return key;
+        }
+        /** Return Signer part. */
+        signer() {
+            const signer = $mol_crypto2_signer.from($mol_crypto2_auditor.size_bin + $mol_crypto2_signer.size_bin);
+            signer.asArray().set(this.asArray().subarray(0, 32));
+            signer.asArrayPrivate().set(this.asArrayPrivate().subarray(0, 32));
+            return signer;
+        }
+        /** Return Cipher part. */
+        cipher() {
+            const cipher = $mol_crypto2_cipher.from($mol_crypto2_socket.size_bin + $mol_crypto2_cipher.size_bin);
+            cipher.asArray().set(this.asArray().subarray(32, 64));
+            cipher.asArrayPrivate().set(this.asArrayPrivate().subarray(32, 64));
+            return cipher;
+        }
+        /** Return Public part. */
+        public() {
+            return $mol_crypto2_public.from(this.asArray());
+        }
+        /** Array view of private part. */
+        asArrayPrivate() {
+            return new Uint8Array(this.buffer, this.byteOffset + 64, 64);
+        }
+        /** String representation of private part. */
+        toStringPrivate() {
+            return this.signer().toStringPrivate() + this.cipher().toStringPrivate();
+        }
+    }
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_private.prototype, "signer", null);
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_private.prototype, "cipher", null);
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_private.prototype, "public", null);
+    __decorate([
+        $mol_memo.method
+    ], $mol_crypto2_private.prototype, "toStringPrivate", null);
+    $.$mol_crypto2_private = $mol_crypto2_private;
 })($ || ($ = {}));
 
 ;
@@ -15370,16 +15460,26 @@ var $;
                 }
                 return '';
             }
+            profile() {
+                return this.pawn()?.dive('bog_id', $giper_baza_dict) ?? null;
+            }
+            profile_name() {
+                return this.pick(this.profile(), 'Name');
+            }
             name() {
-                return this.pick(this.pawn(), 'Subj:Name', 'Title', 'Name');
+                return this.profile_name() || this.pick(this.pawn(), 'Subj:Name', 'Title', 'Name');
             }
             descr() {
                 return this.pick(this.pawn(), 'Subj:Hint', 'Hint', 'Artist', 'Note');
             }
             kind() {
+                if (this.profile_name())
+                    return this.profile_kind();
                 return this.pick(this.meta(), 'Subj:Name');
             }
             icon() {
+                if (this.profile_name())
+                    return '👤';
                 return this.pick(this.pawn(), 'Subj:Icon', 'Icon') || this.pick(this.meta(), 'Subj:Icon') || '💠';
             }
             uri() {
@@ -15392,6 +15492,12 @@ var $;
         __decorate([
             $mol_mem
         ], $bog_dock_card.prototype, "meta", null);
+        __decorate([
+            $mol_mem
+        ], $bog_dock_card.prototype, "profile", null);
+        __decorate([
+            $mol_mem
+        ], $bog_dock_card.prototype, "profile_name", null);
         __decorate([
             $mol_mem
         ], $bog_dock_card.prototype, "name", null);
@@ -16654,93 +16760,6 @@ var $;
 
 
 ;
-"use strict";
-var $;
-(function ($) {
-    /**
-     * Localisation in $mol framework
-     * @see https://mol.hyoo.ru/#!section=docs/=s5aqnb_odub8l
-     */
-    class $mol_locale extends $mol_object {
-        static lang_default() {
-            return 'en';
-        }
-        static lang(next) {
-            return this.$.$mol_state_local.value('locale', next) || $mol_dom_context.navigator.language.replace(/-.*/, '') || this.lang_default();
-        }
-        static langs_rtl() {
-            return ['ar', 'he', 'fa', 'ur', 'yi', 'ps', 'ug', 'sd'];
-        }
-        static direction() {
-            const lang = this.lang();
-            let direction;
-            try {
-                direction = new Intl.Locale(lang).getTextInfo().direction;
-            }
-            catch (e) {
-                $mol_fail_log(e);
-            }
-            return direction ?? (this.langs_rtl().includes(lang) ? 'rtl' : 'ltr');
-        }
-        static source(lang) {
-            return JSON.parse(this.$.$mol_file.relative(`web.locale=${lang}.json`).text().toString());
-        }
-        static texts(lang, next) {
-            if (next)
-                return next;
-            try {
-                return this.source(lang).valueOf();
-            }
-            catch (error) {
-                if ($mol_fail_catch(error)) {
-                    const def = this.lang_default();
-                    if (lang === def)
-                        throw error;
-                }
-            }
-            return {};
-        }
-        static text(key) {
-            const lang = this.lang();
-            const target = this.texts(lang)[key];
-            if (target)
-                return target;
-            this.warn(key);
-            const en = this.texts('en')[key];
-            if (!en)
-                return key;
-            return en;
-        }
-        static warn(key) {
-            console.warn(`Not translated to "${this.lang()}": ${key}`);
-            return null;
-        }
-    }
-    __decorate([
-        $mol_mem
-    ], $mol_locale, "lang_default", null);
-    __decorate([
-        $mol_mem
-    ], $mol_locale, "lang", null);
-    __decorate([
-        $mol_mem
-    ], $mol_locale, "direction", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_locale, "source", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_locale, "texts", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_locale, "text", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_locale, "warn", null);
-    $.$mol_locale = $mol_locale;
-})($ || ($ = {}));
-
-;
 	($.$mol_lights_toggle) = class $mol_lights_toggle extends ($.$mol_check_icon) {
 		Lights_icon(){
 			const obj = new this.$.$mol_icon_brightness_4();
@@ -17127,6 +17146,85 @@ var $;
 var $;
 (function ($) {
     $mol_style_attach("mol/string/string.view.css", "[mol_string] {\n\tbox-sizing: border-box;\n\toutline-offset: 0;\n\tborder: none;\n\tborder-radius: var(--mol_gap_round);\n\twhite-space: pre-line;\n\toverflow: hidden;\n\ttext-overflow: ellipsis;\n\tpadding: var(--mol_gap_text);\n\ttext-align: start;\n\tposition: relative;\n\tfont: inherit;\n\tflex: 1 1 auto;\n\tbackground: transparent;\n\tmin-width: 0;\n\tcolor: inherit;\n\tbackground: var(--mol_theme_field);\n}\n\n[mol_string]:disabled:not(:placeholder-shown) {\n\tbackground-color: transparent;\n\tcolor: var(--mol_theme_text);\n}\n\n[mol_string]:where(:not(:disabled)) {\n\tbox-shadow: inset 0 0 0 1px var(--mol_theme_line);\n}\n\n[mol_string]:where(:not(:disabled)):hover {\n\tbox-shadow: inset 0 0 0 2px var(--mol_theme_line);\n\tz-index: var(--mol_layer_hover);\n}\n\n[mol_string]:focus {\n\toutline: none;\n\tz-index: var(--mol_layer_focus);\n\tcolor: var(--mol_theme_text);\n\tbox-shadow: inset 0 0 0 1px var(--mol_theme_focus);\n}\n\n[mol_string]::placeholder {\n\tcolor: var(--mol_theme_shade);\n}\n\n[mol_string]::-ms-clear {\n\tdisplay: none;\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$mol_paragraph) = class $mol_paragraph extends ($.$mol_view) {
+		line_height(){
+			return 24;
+		}
+		letter_width(){
+			return 7;
+		}
+		width_limit(){
+			return +Infinity;
+		}
+		row_width(){
+			return 0;
+		}
+		sub(){
+			return [(this.title())];
+		}
+	};
+
+
+;
+"use strict";
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_paragraph extends $.$mol_paragraph {
+            maximal_width() {
+                let width = 0;
+                const letter = this.letter_width();
+                for (const kid of this.sub()) {
+                    if (!kid)
+                        continue;
+                    if (kid instanceof $mol_view) {
+                        width += kid.maximal_width();
+                    }
+                    else if (typeof kid !== 'object') {
+                        width += String(kid).length * letter;
+                    }
+                }
+                return width;
+            }
+            width_limit() {
+                return this.$.$mol_window.size().width;
+            }
+            minimal_width() {
+                return this.letter_width();
+            }
+            row_width() {
+                return Math.max(Math.min(this.width_limit(), this.maximal_width()), this.letter_width());
+            }
+            minimal_height() {
+                return Math.max(1, Math.ceil(this.maximal_width() / this.row_width())) * this.line_height();
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_paragraph.prototype, "maximal_width", null);
+        __decorate([
+            $mol_mem
+        ], $mol_paragraph.prototype, "row_width", null);
+        __decorate([
+            $mol_mem
+        ], $mol_paragraph.prototype, "minimal_height", null);
+        $$.$mol_paragraph = $mol_paragraph;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/paragraph/paragraph.view.css", ":where([mol_paragraph]) {\n\tmargin: 0;\n\tmax-width: 100%;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -17593,6 +17691,24 @@ var $;
 			(obj.value) = (next) => ((this.hint_edit(next)));
 			return obj;
 		}
+		status(){
+			return "";
+		}
+		Status(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.status()));
+			return obj;
+		}
+		retry(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Retry(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_dock_card_app_Retry_title")));
+			(obj.click) = (next) => ((this.retry(next)));
+			return obj;
+		}
 		share(){
 			return "";
 		}
@@ -17618,6 +17734,8 @@ var $;
 				(this.Icon_edit()), 
 				(this.Name_edit()), 
 				(this.Hint_edit()), 
+				(this.Status()), 
+				(this.Retry()), 
 				(this.Share()), 
 				(this.Create())
 			];
@@ -17639,6 +17757,19 @@ var $;
 		body(){
 			return [(this.Content())];
 		}
+		attempt(next){
+			if(next !== undefined) return next;
+			return 0;
+		}
+		status_saving(){
+			return (this.$.$mol_locale.text("$bog_dock_card_app_status_saving"));
+		}
+		status_failed(){
+			return (this.$.$mol_locale.text("$bog_dock_card_app_status_failed"));
+		}
+		status_search(){
+			return (this.$.$mol_locale.text("$bog_dock_card_app_status_search"));
+		}
 	};
 	($mol_mem(($.$bog_dock_card_app.prototype), "Theme"));
 	($mol_mem(($.$bog_dock_card_app.prototype), "Lights"));
@@ -17649,11 +17780,33 @@ var $;
 	($mol_mem(($.$bog_dock_card_app.prototype), "Name_edit"));
 	($mol_mem(($.$bog_dock_card_app.prototype), "hint_edit"));
 	($mol_mem(($.$bog_dock_card_app.prototype), "Hint_edit"));
+	($mol_mem(($.$bog_dock_card_app.prototype), "Status"));
+	($mol_mem(($.$bog_dock_card_app.prototype), "retry"));
+	($mol_mem(($.$bog_dock_card_app.prototype), "Retry"));
 	($mol_mem(($.$bog_dock_card_app.prototype), "Share"));
 	($mol_mem(($.$bog_dock_card_app.prototype), "create"));
 	($mol_mem(($.$bog_dock_card_app.prototype), "Create"));
 	($mol_mem(($.$bog_dock_card_app.prototype), "Content"));
+	($mol_mem(($.$bog_dock_card_app.prototype), "attempt"));
 
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_wait_timeout_async(timeout) {
+        const promise = new $mol_promise();
+        const task = new this.$mol_after_timeout(timeout, () => promise.done());
+        return Object.assign(promise, {
+            destructor: () => task.destructor()
+        });
+    }
+    $.$mol_wait_timeout_async = $mol_wait_timeout_async;
+    function $mol_wait_timeout(timeout) {
+        return this.$mol_wire_sync(this).$mol_wait_timeout_async(timeout);
+    }
+    $.$mol_wait_timeout = $mol_wait_timeout;
+})($ || ($ = {}));
 
 ;
 "use strict";
@@ -17698,6 +17851,78 @@ var $;
 
 ;
 "use strict";
+var $;
+(function ($) {
+    /** Resolves Pointer from Giper ID grant to current data Land */
+    function $bog_id_land(pointer) {
+        const glob = this.$giper_baza_glob;
+        const link = glob.Land(new $giper_baza_link(pointer)).Data($giper_baza_atom_text).val();
+        return link ? glob.Land(new $giper_baza_link(link)) : null;
+    }
+    $.$bog_id_land = $bog_id_land;
+    /** Has Land got everything that master knows */
+    function $bog_id_land_synced(str) {
+        const link = new $giper_baza_link(str);
+        const glob = this.$giper_baza_glob;
+        const land = glob.Land(link);
+        land.sync();
+        const faces = glob.yard().masters().map(port => glob.yard().face_port_land([port, link]));
+        this.$mol_state_time.now(500);
+        return faces.some(map => map && $bog_id_land_covers(land.faces, map));
+    }
+    $.$bog_id_land_synced = $bog_id_land_synced;
+    /** What master really has for Land, asked by separate connection */
+    function $bog_id_land_ask(master, land) {
+        return new Promise(done => {
+            const socket = new $mol_dom_context.WebSocket(master.replace(/^http/, 'ws'), ['$giper_baza_yard_2']);
+            socket.binaryType = 'arraybuffer';
+            const finish = (faces) => {
+                clearTimeout(timer);
+                socket.onopen = socket.onerror = socket.onmessage = null;
+                socket.close();
+                done(faces);
+            };
+            const timer = setTimeout(() => finish(null), 3000);
+            socket.onopen = () => socket.send(land.face_pack().asArray());
+            socket.onerror = () => finish(null);
+            socket.onmessage = event => {
+                if (!event.data?.byteLength)
+                    return;
+                const pack = new $giper_baza_pack(event.data);
+                const part = new Map(pack.parts()).get(land.link().str);
+                if (part)
+                    finish(part.faces);
+            };
+        });
+    }
+    $.$bog_id_land_ask = $bog_id_land_ask;
+    /** Sends Lands to master and checks that it really has them */
+    async function $bog_id_land_push(lands) {
+        const yard = this.$giper_baza_glob.yard();
+        for (let i = 0; i < 4; ++i) {
+            await Promise.all(lands.map(land => $mol_wire_async(land).units_saving()));
+            const master = yard.master_current();
+            const faces = await Promise.all(lands.map(land => this.$bog_id_land_ask(master, land)));
+            if (lands.every((land, at) => faces[at] && $bog_id_land_covers(faces[at], land.faces)))
+                return true;
+            if (i)
+                yard.reconnects(null);
+            await new Promise(done => setTimeout(done, 800));
+        }
+        return false;
+    }
+    $.$bog_id_land_push = $bog_id_land_push;
+    function $bog_id_land_covers(left, right) {
+        return [...right].every(([peer, face]) => {
+            const own = left.get(peer);
+            return (own?.time_tick ?? 0) >= face.time_tick && (own?.summ ?? 0) >= face.summ;
+        });
+    }
+    $.$bog_id_land_covers = $bog_id_land_covers;
+})($ || ($ = {}));
+
+;
+"use strict";
 
 
 ;
@@ -17717,11 +17942,60 @@ var $;
             rows() {
                 if (!this.subj())
                     return [this.Create()];
+                const state = this.state();
                 return [
-                    this.Card(),
+                    ...state === 'search' ? [] : [this.Card()],
                     ...this.editable() ? [this.Icon_edit(), this.Name_edit(), this.Hint_edit()] : [],
-                    this.Share(),
+                    ...state === 'ready' ? [] : [this.Status()],
+                    ...state === 'failed' ? [this.Retry()] : [],
+                    ...state === 'ready' ? [this.Share()] : [],
                 ];
+            }
+            state() {
+                try {
+                    if (!this.editable())
+                        return this.Card().name() ? 'ready' : 'search';
+                    return this.delivered() ? 'ready' : 'failed';
+                }
+                catch (error) {
+                    if (!$mol_promise_like(error))
+                        throw error;
+                    return this.subj_editable() ? 'saving' : 'search';
+                }
+            }
+            status() {
+                const state = this.state();
+                if (state === 'saving')
+                    return this.status_saving();
+                if (state === 'failed')
+                    return this.status_failed();
+                return this.status_search();
+            }
+            subj_editable() {
+                try {
+                    return this.editable();
+                }
+                catch (error) {
+                    if (!$mol_promise_like(error))
+                        throw error;
+                    return false;
+                }
+            }
+            delivered() {
+                const subj = this.subj();
+                this.attempt();
+                subj.name();
+                subj.icon();
+                subj.hint();
+                this.$.$mol_wait_timeout(500);
+                return $mol_wire_sync(this).push(subj.land());
+            }
+            push(land) {
+                return this.$.$bog_id_land_push([land]);
+            }
+            retry() {
+                this.attempt(this.attempt() + 1);
+                return null;
             }
             editable() {
                 return this.subj()?.can_change() ?? false;
@@ -17750,6 +18024,9 @@ var $;
         __decorate([
             $mol_mem
         ], $bog_dock_card_app.prototype, "subj", null);
+        __decorate([
+            $mol_mem
+        ], $bog_dock_card_app.prototype, "delivered", null);
         __decorate([
             $mol_action
         ], $bog_dock_card_app.prototype, "create", null);

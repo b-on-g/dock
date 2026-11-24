@@ -2141,20 +2141,212 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    /** Reactive Set */
-    class $mol_wire_set<Value> extends Set<Value> {
-        pub: $mol_wire_pub;
-        has(value: Value): boolean;
-        entries(): SetIterator<[Value, Value]>;
-        keys(): SetIterator<Value>;
-        values(): SetIterator<Value>;
-        forEach(task: (value: Value, value2: Value, set: Set<Value>) => void, self?: any): void;
-        [Symbol.iterator](): SetIterator<Value>;
-        get size(): number;
-        add(value: Value): this;
-        delete(value: Value): boolean;
-        clear(): void;
-        item(val: Value, next?: boolean): boolean;
+    class $mol_storage extends $mol_object2 {
+        /** Is storage a long term. */
+        static persisted(next?: boolean): boolean;
+        /** Total storage quota in bytes. */
+        static total(): number;
+        /** Total storage usage in bytes. */
+        static used(): number;
+        /** Minimum available free space in bytes. */
+        static free(): number;
+        /** Fulfillness of storage. */
+        static portion(): number;
+        /**
+         * Fulfillness logarithmic level.
+         * `0` - empty
+         * `1` - half free
+         * `2` - quart free
+         * `Infinity` - fulfilled
+         */
+        static level(): number;
+    }
+}
+
+declare namespace $ {
+    /**
+     * Disable reaping of current subscriber
+     */
+    function $mol_wire_solid(): void;
+}
+
+declare namespace $ {
+    let $mol_mem_persist: typeof $mol_wire_solid;
+}
+
+declare namespace $ {
+    let $mol_mem_cached: typeof $mol_wire_probe;
+}
+
+declare namespace $ {
+    /**
+     * Convert asynchronous (promise-based) API to synchronous by wrapping function and method calls in a fiber.
+     * @see https://mol.hyoo.ru/#!section=docs/=1fcpsq_1wh0h2
+     */
+    export function $mol_wire_sync<Host extends object>(obj: Host): ObjectOrFunctionResultAwaited<Host>;
+    type FunctionResultAwaited<Some> = Some extends (...args: infer Args) => infer Res ? (...args: Args) => Awaited<Res> : Some;
+    type ConstructorResultAwaited<Some> = Some extends new (...args: infer Args) => infer Res ? new (...args: Args) => Res : {};
+    type MethodsResultAwaited<Host extends Object> = {
+        [K in keyof Host]: FunctionResultAwaited<Host[K]>;
+    };
+    type ObjectOrFunctionResultAwaited<Some> = (Some extends (...args: any) => unknown ? FunctionResultAwaited<Some> : {}) & (Some extends Object ? MethodsResultAwaited<Some> & ConstructorResultAwaited<Some> : Some);
+    export {};
+}
+
+declare namespace $ {
+    function $mol_wait_user_async(this: $): Promise<unknown>;
+    function $mol_wait_user(this: $): unknown;
+}
+
+declare namespace $ {
+    class $mol_storage_web extends $mol_storage {
+        static native(): StorageManager;
+        static persisted(next?: boolean, cache?: 'cache'): boolean;
+        static estimate(next?: null): StorageEstimate;
+        static total(): number;
+        static used(): number;
+        static free(): number;
+        static portion(): number;
+        static dir(): FileSystemDirectoryHandle;
+    }
+}
+
+declare namespace $ {
+    class $mol_state_local<Value> extends $mol_object {
+        static 'native()': Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
+        static native(): Storage | {
+            getItem(key: string): any;
+            setItem(key: string, value: string): void;
+            removeItem(key: string): void;
+        };
+        static changes(next?: StorageEvent): StorageEvent | undefined;
+        static value<Value>(key: string, next?: Value | null): Value | null;
+        prefix(): string;
+        value(key: string, next?: Value): Value | null;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    class $mol_lock extends $mol_object {
+        protected promise: null | Promise<void>;
+        wait(): Promise<() => void>;
+        grab(): () => void;
+    }
+}
+
+declare namespace $ {
+    function $mol_compare_array<Value extends ArrayLike<unknown>>(a: Value, b: Value): boolean;
+}
+
+declare namespace $ {
+    type $mol_charset_encoding = 'utf8' | 'utf-16le' | 'utf-16be' | 'ibm866' | 'iso-8859-2' | 'iso-8859-3' | 'iso-8859-4' | 'iso-8859-5' | 'iso-8859-6' | 'iso-8859-7' | 'iso-8859-8' | 'iso-8859-8i' | 'iso-8859-10' | 'iso-8859-13' | 'iso-8859-14' | 'iso-8859-15' | 'iso-8859-16' | 'koi8-r' | 'koi8-u' | 'koi8-r' | 'macintosh' | 'windows-874' | 'windows-1250' | 'windows-1251' | 'windows-1252' | 'windows-1253' | 'windows-1254' | 'windows-1255' | 'windows-1256' | 'windows-1257' | 'windows-1258' | 'x-mac-cyrillic' | 'gbk' | 'gb18030' | 'hz-gb-2312' | 'big5' | 'euc-jp' | 'iso-2022-jp' | 'shift-jis' | 'euc-kr' | 'iso-2022-kr';
+}
+
+declare namespace $ {
+    function $mol_charset_decode(buffer: AllowSharedBufferSource, encoding?: $mol_charset_encoding): string;
+}
+
+declare namespace $ {
+    type $mol_file_transaction_mode = 'create' | 'exists_truncate' | 'exists_fail' | 'read_only' | 'write_only' | 'read_write' | 'append';
+    type $mol_file_transaction_buffer = ArrayBufferView;
+    class $mol_file_transaction extends $mol_object {
+        path(): string;
+        modes(): readonly $mol_file_transaction_mode[];
+        write(options: {
+            buffer: ArrayBufferView | string | readonly ArrayBufferView[];
+            offset?: number | null;
+            length?: number | null;
+            position?: number | null;
+        }): number;
+        read(): Uint8Array<ArrayBuffer>;
+        truncate(size: number): void;
+        flush(): void;
+        close(): void;
+        destructor(): void;
+    }
+}
+
+declare namespace $ {
+    class $mol_file_base extends $mol_object {
+        static absolute<This extends typeof $mol_file_base>(this: This, path: string): InstanceType<This>;
+        static relative<This extends typeof $mol_file_base>(this: This, path: string): InstanceType<This>;
+        static base: string;
+        path(): string;
+        parent(): this;
+        exists_cut(): boolean;
+        protected root(): boolean;
+        protected stat(next?: $mol_file_stat | null, virt?: 'virt'): $mol_file_stat | null;
+        protected static changed: Set<$mol_file_base>;
+        protected static frame: null | $mol_after_timeout;
+        protected static changed_add(type: 'change' | 'rename', path: string): void;
+        /**
+         * Должно быть больше, чем время между событиями от вотчера при записи внешним процессом.
+         * Иначе запуск ресетов паралельно с изменением может привести к неконсистентности.
+         */
+        static watch_debounce(): number;
+        static flush(): void;
+        protected static watching: boolean;
+        protected static lock: $mol_lock;
+        protected static watch_off(path: string): void;
+        static unwatched<Result>(side_effect: () => Result, affected_dir: string): Result;
+        reset(): void;
+        modified(): Date | null;
+        version(): string;
+        protected info(path: string): null | $mol_file_stat;
+        protected ensure(): void;
+        protected drop(): void;
+        protected copy(to: string): void;
+        protected read(): Uint8Array<ArrayBuffer>;
+        protected write(buffer: Uint8Array<ArrayBuffer>): void;
+        protected kids(): readonly this[];
+        readable(opts: {
+            start?: number;
+            end?: number;
+        }): ReadableStream<Uint8Array<ArrayBuffer>>;
+        writable(opts: {
+            start?: number;
+        }): WritableStream<Uint8Array<ArrayBuffer>>;
+        buffer(next?: Uint8Array<ArrayBuffer>): Uint8Array<ArrayBuffer>;
+        stat_make(size: number): {
+            readonly type: "file";
+            readonly size: number;
+            readonly atime: Date;
+            readonly mtime: Date;
+            readonly ctime: Date;
+        };
+        clone(to: string): this | null;
+        watcher(): {
+            destructor(): void;
+        };
+        exists(next?: boolean): boolean;
+        type(): "" | $mol_file_type;
+        name(): string;
+        ext(): string;
+        text(next?: string, virt?: 'virt'): string;
+        text_int(next?: string, virt?: 'virt'): string;
+        sub(reset?: null): this[];
+        resolve(path: string): this;
+        relate(base?: $mol_file_base): string;
+        find(include?: RegExp, exclude?: RegExp): this[];
+        size(): number;
+        toJSON(): string;
+        open(...modes: readonly $mol_file_transaction_mode[]): $mol_file_transaction;
+    }
+}
+
+declare namespace $ {
+    type $mol_file_type = 'file' | 'dir' | 'link';
+    interface $mol_file_stat {
+        type: $mol_file_type;
+        size: number;
+        atime: Date;
+        mtime: Date;
+        ctime: Date;
+    }
+    class $mol_file extends $mol_file_base {
     }
 }
 
@@ -2219,6 +2411,138 @@ declare namespace $ {
         'Network Authentication Required' = 511,
         'Network Read Timeout Error' = 598,
         'Network Connect Timeout Error' = 599
+    }
+}
+
+declare namespace $ {
+    class $mol_error_mix<Cause extends {} = {}> extends AggregateError {
+        readonly cause: Cause;
+        name: string;
+        constructor(message: string, cause?: Cause, ...errors: readonly Error[]);
+        static [Symbol.toPrimitive](): string;
+        static toString(): string;
+        static make(...params: ConstructorParameters<typeof $mol_error_mix>): $mol_error_mix<{}>;
+    }
+}
+
+declare namespace $ {
+    function $mol_error_fence<Data>(task: () => Data, fallback: (parent: Error) => Error | Data | PromiseLike<Data>, loading?: (parent: PromiseLike<Data>) => Error | Data | PromiseLike<Data>): Data;
+}
+
+declare namespace $ {
+    function $mol_error_enriched<V>(cause: {}, cb: () => V): V;
+}
+
+declare namespace $ {
+    function $mol_dom_parse(text: string, type?: DOMParserSupportedType): Document;
+}
+
+declare namespace $ {
+    class $mol_fetch_response extends $mol_object {
+        readonly native: Response;
+        readonly request: $mol_fetch_request;
+        status(): "success" | "failed" | "unknown" | "inform" | "redirect" | "wrong";
+        code(): number;
+        ok(): boolean;
+        message(): string;
+        headers(): Headers;
+        mime(): string | null;
+        stream(): ReadableStream<Uint8Array<ArrayBuffer>> | null;
+        text(): string;
+        json(): unknown;
+        blob(): Blob;
+        buffer(): ArrayBuffer;
+        xml(): Document;
+        xhtml(): Document;
+        html(): Document;
+    }
+    class $mol_fetch_request extends $mol_object {
+        readonly native: Request;
+        response_async(): Promise<Response> & {
+            destructor: () => void;
+        };
+        response(): $mol_fetch_response;
+        success(): $mol_fetch_response;
+    }
+    class $mol_fetch extends $mol_object {
+        static request(input: RequestInfo, init?: RequestInit): $mol_fetch_request;
+        static response(input: RequestInfo, init?: RequestInit): $mol_fetch_response;
+        static success(input: RequestInfo, init?: RequestInit): $mol_fetch_response;
+        static stream(input: RequestInfo, init?: RequestInit): ReadableStream<Uint8Array<ArrayBuffer>> | null;
+        static text(input: RequestInfo, init?: RequestInit): string;
+        static json(input: RequestInfo, init?: RequestInit): unknown;
+        static blob(input: RequestInfo, init?: RequestInit): Blob;
+        static buffer(input: RequestInfo, init?: RequestInit): ArrayBuffer;
+        static xml(input: RequestInfo, init?: RequestInit): Document;
+        static xhtml(input: RequestInfo, init?: RequestInit): Document;
+        static html(input: RequestInfo, init?: RequestInit): Document;
+    }
+}
+
+declare namespace $ {
+    class $mol_file_webdav extends $mol_file_base {
+        static relative<This extends typeof $mol_file>(this: This, path: string): InstanceType<This>;
+        resolve(path: string): this;
+        static headers(): Record<string, string>;
+        headers(): Record<string, string>;
+        protected fetch(init: RequestInit): $mol_fetch_response;
+        protected read(): Uint8Array<ArrayBuffer>;
+        protected write(body: Uint8Array<ArrayBuffer>): void;
+        protected ensure(): void;
+        protected drop(): void;
+        protected copy(to: string): void;
+        protected kids(): this[];
+        readable(opts: {
+            start?: number;
+            end?: number;
+        }): ReadableStream<Uint8Array<ArrayBuffer>>;
+        protected info(): $mol_file_stat | null;
+    }
+}
+
+declare namespace $ {
+    class $mol_file_web extends $mol_file_webdav {
+        static base: string;
+        version(): string;
+        protected info(): $mol_file_stat | null;
+    }
+}
+
+declare namespace $ {
+    interface $mol_locale_dict {
+        [key: string]: string;
+    }
+    /**
+     * Localisation in $mol framework
+     * @see https://mol.hyoo.ru/#!section=docs/=s5aqnb_odub8l
+     */
+    class $mol_locale extends $mol_object {
+        static lang_default(): string;
+        static lang(next?: string): string;
+        static langs_rtl(): string[];
+        static direction(): "ltr" | "rtl";
+        static source(lang: string): any;
+        static texts(lang: string, next?: $mol_locale_dict): $mol_locale_dict;
+        static text(key: string): string;
+        static warn(key: string): null;
+    }
+}
+
+declare namespace $ {
+    /** Reactive Set */
+    class $mol_wire_set<Value> extends Set<Value> {
+        pub: $mol_wire_pub;
+        has(value: Value): boolean;
+        entries(): SetIterator<[Value, Value]>;
+        keys(): SetIterator<Value>;
+        values(): SetIterator<Value>;
+        forEach(task: (value: Value, value2: Value, set: Set<Value>) => void, self?: any): void;
+        [Symbol.iterator](): SetIterator<Value>;
+        get size(): number;
+        add(value: Value): this;
+        delete(value: Value): boolean;
+        clear(): void;
+        item(val: Value, next?: boolean): boolean;
     }
 }
 
@@ -2395,95 +2719,6 @@ declare namespace $ {
         /** String representation of private part. */
         toStringPrivate(): string;
     }
-}
-
-declare namespace $ {
-    /**
-     * Disable reaping of current subscriber
-     */
-    function $mol_wire_solid(): void;
-}
-
-declare namespace $ {
-    class $mol_storage extends $mol_object2 {
-        /** Is storage a long term. */
-        static persisted(next?: boolean): boolean;
-        /** Total storage quota in bytes. */
-        static total(): number;
-        /** Total storage usage in bytes. */
-        static used(): number;
-        /** Minimum available free space in bytes. */
-        static free(): number;
-        /** Fulfillness of storage. */
-        static portion(): number;
-        /**
-         * Fulfillness logarithmic level.
-         * `0` - empty
-         * `1` - half free
-         * `2` - quart free
-         * `Infinity` - fulfilled
-         */
-        static level(): number;
-    }
-}
-
-declare namespace $ {
-    let $mol_mem_persist: typeof $mol_wire_solid;
-}
-
-declare namespace $ {
-    let $mol_mem_cached: typeof $mol_wire_probe;
-}
-
-declare namespace $ {
-    /**
-     * Convert asynchronous (promise-based) API to synchronous by wrapping function and method calls in a fiber.
-     * @see https://mol.hyoo.ru/#!section=docs/=1fcpsq_1wh0h2
-     */
-    export function $mol_wire_sync<Host extends object>(obj: Host): ObjectOrFunctionResultAwaited<Host>;
-    type FunctionResultAwaited<Some> = Some extends (...args: infer Args) => infer Res ? (...args: Args) => Awaited<Res> : Some;
-    type ConstructorResultAwaited<Some> = Some extends new (...args: infer Args) => infer Res ? new (...args: Args) => Res : {};
-    type MethodsResultAwaited<Host extends Object> = {
-        [K in keyof Host]: FunctionResultAwaited<Host[K]>;
-    };
-    type ObjectOrFunctionResultAwaited<Some> = (Some extends (...args: any) => unknown ? FunctionResultAwaited<Some> : {}) & (Some extends Object ? MethodsResultAwaited<Some> & ConstructorResultAwaited<Some> : Some);
-    export {};
-}
-
-declare namespace $ {
-    function $mol_wait_user_async(this: $): Promise<unknown>;
-    function $mol_wait_user(this: $): unknown;
-}
-
-declare namespace $ {
-    class $mol_storage_web extends $mol_storage {
-        static native(): StorageManager;
-        static persisted(next?: boolean, cache?: 'cache'): boolean;
-        static estimate(next?: null): StorageEstimate;
-        static total(): number;
-        static used(): number;
-        static free(): number;
-        static portion(): number;
-        static dir(): FileSystemDirectoryHandle;
-    }
-}
-
-declare namespace $ {
-    class $mol_state_local<Value> extends $mol_object {
-        static 'native()': Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
-        static native(): Storage | {
-            getItem(key: string): any;
-            setItem(key: string, value: string): void;
-            removeItem(key: string): void;
-        };
-        static changes(next?: StorageEvent): StorageEvent | undefined;
-        static value<Value>(key: string, next?: Value | null): Value | null;
-        prefix(): string;
-        value(key: string, next?: Value): Value | null;
-    }
-}
-
-declare namespace $ {
 }
 
 declare namespace $ {
@@ -2824,17 +3059,6 @@ declare namespace $ {
         Value: $mol_type_result<$mol_type_foot<Funcs>>;
     };
     export {};
-}
-
-declare namespace $ {
-    class $mol_error_mix<Cause extends {} = {}> extends AggregateError {
-        readonly cause: Cause;
-        name: string;
-        constructor(message: string, cause?: Cause, ...errors: readonly Error[]);
-        static [Symbol.toPrimitive](): string;
-        static toString(): string;
-        static make(...params: ConstructorParameters<typeof $mol_error_mix>): $mol_error_mix<{}>;
-    }
 }
 
 declare namespace $ {
@@ -3238,10 +3462,6 @@ declare namespace $ {
 
 declare namespace $ {
     function $mol_bigint_decode(buf: Uint8Array<ArrayBuffer>): bigint;
-}
-
-declare namespace $ {
-    function $mol_dom_parse(text: string, type?: DOMParserSupportedType): Document;
 }
 
 declare namespace $ {
@@ -33724,206 +33944,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    class $mol_lock extends $mol_object {
-        protected promise: null | Promise<void>;
-        wait(): Promise<() => void>;
-        grab(): () => void;
-    }
-}
-
-declare namespace $ {
-    function $mol_compare_array<Value extends ArrayLike<unknown>>(a: Value, b: Value): boolean;
-}
-
-declare namespace $ {
-    type $mol_charset_encoding = 'utf8' | 'utf-16le' | 'utf-16be' | 'ibm866' | 'iso-8859-2' | 'iso-8859-3' | 'iso-8859-4' | 'iso-8859-5' | 'iso-8859-6' | 'iso-8859-7' | 'iso-8859-8' | 'iso-8859-8i' | 'iso-8859-10' | 'iso-8859-13' | 'iso-8859-14' | 'iso-8859-15' | 'iso-8859-16' | 'koi8-r' | 'koi8-u' | 'koi8-r' | 'macintosh' | 'windows-874' | 'windows-1250' | 'windows-1251' | 'windows-1252' | 'windows-1253' | 'windows-1254' | 'windows-1255' | 'windows-1256' | 'windows-1257' | 'windows-1258' | 'x-mac-cyrillic' | 'gbk' | 'gb18030' | 'hz-gb-2312' | 'big5' | 'euc-jp' | 'iso-2022-jp' | 'shift-jis' | 'euc-kr' | 'iso-2022-kr';
-}
-
-declare namespace $ {
-    function $mol_charset_decode(buffer: AllowSharedBufferSource, encoding?: $mol_charset_encoding): string;
-}
-
-declare namespace $ {
-    type $mol_file_transaction_mode = 'create' | 'exists_truncate' | 'exists_fail' | 'read_only' | 'write_only' | 'read_write' | 'append';
-    type $mol_file_transaction_buffer = ArrayBufferView;
-    class $mol_file_transaction extends $mol_object {
-        path(): string;
-        modes(): readonly $mol_file_transaction_mode[];
-        write(options: {
-            buffer: ArrayBufferView | string | readonly ArrayBufferView[];
-            offset?: number | null;
-            length?: number | null;
-            position?: number | null;
-        }): number;
-        read(): Uint8Array<ArrayBuffer>;
-        truncate(size: number): void;
-        flush(): void;
-        close(): void;
-        destructor(): void;
-    }
-}
-
-declare namespace $ {
-    class $mol_file_base extends $mol_object {
-        static absolute<This extends typeof $mol_file_base>(this: This, path: string): InstanceType<This>;
-        static relative<This extends typeof $mol_file_base>(this: This, path: string): InstanceType<This>;
-        static base: string;
-        path(): string;
-        parent(): this;
-        exists_cut(): boolean;
-        protected root(): boolean;
-        protected stat(next?: $mol_file_stat | null, virt?: 'virt'): $mol_file_stat | null;
-        protected static changed: Set<$mol_file_base>;
-        protected static frame: null | $mol_after_timeout;
-        protected static changed_add(type: 'change' | 'rename', path: string): void;
-        /**
-         * Должно быть больше, чем время между событиями от вотчера при записи внешним процессом.
-         * Иначе запуск ресетов паралельно с изменением может привести к неконсистентности.
-         */
-        static watch_debounce(): number;
-        static flush(): void;
-        protected static watching: boolean;
-        protected static lock: $mol_lock;
-        protected static watch_off(path: string): void;
-        static unwatched<Result>(side_effect: () => Result, affected_dir: string): Result;
-        reset(): void;
-        modified(): Date | null;
-        version(): string;
-        protected info(path: string): null | $mol_file_stat;
-        protected ensure(): void;
-        protected drop(): void;
-        protected copy(to: string): void;
-        protected read(): Uint8Array<ArrayBuffer>;
-        protected write(buffer: Uint8Array<ArrayBuffer>): void;
-        protected kids(): readonly this[];
-        readable(opts: {
-            start?: number;
-            end?: number;
-        }): ReadableStream<Uint8Array<ArrayBuffer>>;
-        writable(opts: {
-            start?: number;
-        }): WritableStream<Uint8Array<ArrayBuffer>>;
-        buffer(next?: Uint8Array<ArrayBuffer>): Uint8Array<ArrayBuffer>;
-        stat_make(size: number): {
-            readonly type: "file";
-            readonly size: number;
-            readonly atime: Date;
-            readonly mtime: Date;
-            readonly ctime: Date;
-        };
-        clone(to: string): this | null;
-        watcher(): {
-            destructor(): void;
-        };
-        exists(next?: boolean): boolean;
-        type(): "" | $mol_file_type;
-        name(): string;
-        ext(): string;
-        text(next?: string, virt?: 'virt'): string;
-        text_int(next?: string, virt?: 'virt'): string;
-        sub(reset?: null): this[];
-        resolve(path: string): this;
-        relate(base?: $mol_file_base): string;
-        find(include?: RegExp, exclude?: RegExp): this[];
-        size(): number;
-        toJSON(): string;
-        open(...modes: readonly $mol_file_transaction_mode[]): $mol_file_transaction;
-    }
-}
-
-declare namespace $ {
-    type $mol_file_type = 'file' | 'dir' | 'link';
-    interface $mol_file_stat {
-        type: $mol_file_type;
-        size: number;
-        atime: Date;
-        mtime: Date;
-        ctime: Date;
-    }
-    class $mol_file extends $mol_file_base {
-    }
-}
-
-declare namespace $ {
-    function $mol_error_fence<Data>(task: () => Data, fallback: (parent: Error) => Error | Data | PromiseLike<Data>, loading?: (parent: PromiseLike<Data>) => Error | Data | PromiseLike<Data>): Data;
-}
-
-declare namespace $ {
-    function $mol_error_enriched<V>(cause: {}, cb: () => V): V;
-}
-
-declare namespace $ {
-    class $mol_fetch_response extends $mol_object {
-        readonly native: Response;
-        readonly request: $mol_fetch_request;
-        status(): "success" | "unknown" | "inform" | "redirect" | "wrong" | "failed";
-        code(): number;
-        ok(): boolean;
-        message(): string;
-        headers(): Headers;
-        mime(): string | null;
-        stream(): ReadableStream<Uint8Array<ArrayBuffer>> | null;
-        text(): string;
-        json(): unknown;
-        blob(): Blob;
-        buffer(): ArrayBuffer;
-        xml(): Document;
-        xhtml(): Document;
-        html(): Document;
-    }
-    class $mol_fetch_request extends $mol_object {
-        readonly native: Request;
-        response_async(): Promise<Response> & {
-            destructor: () => void;
-        };
-        response(): $mol_fetch_response;
-        success(): $mol_fetch_response;
-    }
-    class $mol_fetch extends $mol_object {
-        static request(input: RequestInfo, init?: RequestInit): $mol_fetch_request;
-        static response(input: RequestInfo, init?: RequestInit): $mol_fetch_response;
-        static success(input: RequestInfo, init?: RequestInit): $mol_fetch_response;
-        static stream(input: RequestInfo, init?: RequestInit): ReadableStream<Uint8Array<ArrayBuffer>> | null;
-        static text(input: RequestInfo, init?: RequestInit): string;
-        static json(input: RequestInfo, init?: RequestInit): unknown;
-        static blob(input: RequestInfo, init?: RequestInit): Blob;
-        static buffer(input: RequestInfo, init?: RequestInit): ArrayBuffer;
-        static xml(input: RequestInfo, init?: RequestInit): Document;
-        static xhtml(input: RequestInfo, init?: RequestInit): Document;
-        static html(input: RequestInfo, init?: RequestInit): Document;
-    }
-}
-
-declare namespace $ {
-    class $mol_file_webdav extends $mol_file_base {
-        static relative<This extends typeof $mol_file>(this: This, path: string): InstanceType<This>;
-        resolve(path: string): this;
-        static headers(): Record<string, string>;
-        headers(): Record<string, string>;
-        protected fetch(init: RequestInit): $mol_fetch_response;
-        protected read(): Uint8Array<ArrayBuffer>;
-        protected write(body: Uint8Array<ArrayBuffer>): void;
-        protected ensure(): void;
-        protected drop(): void;
-        protected copy(to: string): void;
-        protected kids(): this[];
-        readable(opts: {
-            start?: number;
-            end?: number;
-        }): ReadableStream<Uint8Array<ArrayBuffer>>;
-        protected info(): $mol_file_stat | null;
-    }
-}
-
-declare namespace $ {
-    class $mol_file_web extends $mol_file_webdav {
-        static base: string;
-        version(): string;
-        protected info(): $mol_file_stat | null;
-    }
-}
-
-declare namespace $ {
     /** Whole global graph database which contains Lands. */
     class $giper_baza_glob extends $mol_object {
         static lands_touched: $mol_wire_set<string>;
@@ -34100,26 +34120,6 @@ declare namespace $.$$ {
         title(): string;
         minimal_width(): number;
         minimal_height(): number;
-    }
-}
-
-declare namespace $ {
-    interface $mol_locale_dict {
-        [key: string]: string;
-    }
-    /**
-     * Localisation in $mol framework
-     * @see https://mol.hyoo.ru/#!section=docs/=s5aqnb_odub8l
-     */
-    class $mol_locale extends $mol_object {
-        static lang_default(): string;
-        static lang(next?: string): string;
-        static langs_rtl(): string[];
-        static direction(): "ltr" | "rtl";
-        static source(lang: string): any;
-        static texts(lang: string, next?: $mol_locale_dict): $mol_locale_dict;
-        static text(key: string): string;
-        static warn(key: string): null;
     }
 }
 
@@ -45226,6 +45226,7 @@ declare namespace $ {
 		Kind( ): $mol_view
 		link( ): string
 		host( ): string
+		profile_kind( ): string
 		target( ): string
 		sub( ): readonly(any)[]
 	}
@@ -45238,6 +45239,8 @@ declare namespace $.$$ {
         pawn(): $giper_baza_dict | null;
         meta(): $giper_baza_dict | null;
         pick(pawn: $giper_baza_dict | null, ...keys: string[]): string;
+        profile(): $giper_baza_dict | null;
+        profile_name(): string;
         name(): string;
         descr(): string;
         kind(): string;
@@ -46133,6 +46136,18 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    /** Resolves Pointer from Giper ID grant to current data Land */
+    function $bog_id_land(this: $, pointer: string): $giper_baza_land | null;
+    /** Has Land got everything that master knows */
+    function $bog_id_land_synced(this: $, str: string): boolean;
+    /** What master really has for Land, asked by separate connection */
+    function $bog_id_land_ask(this: $, master: string, land: $giper_baza_land): Promise<$giper_baza_face_map | null>;
+    /** Sends Lands to master and checks that it really has them */
+    function $bog_id_land_push(this: $, lands: readonly $giper_baza_land[]): Promise<boolean>;
+    function $bog_id_land_covers(left: $giper_baza_face_map, right: $giper_baza_face_map): boolean;
+}
+
+declare namespace $ {
     class $bog_id_path_auth extends $giper_baza_auth {
         static storage_key(): string;
         static current(next?: $giper_baza_auth | null): $giper_baza_auth;
@@ -46206,27 +46221,42 @@ declare namespace $ {
 		,
 		ReturnType< $mol_string['value'] >
 	>
-	type $mol_button_copy__title_bog_dock_card_app_12 = $mol_type_enforce<
+	type $mol_paragraph__title_bog_dock_card_app_12 = $mol_type_enforce<
+		ReturnType< $bog_dock_card_app['status'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_button_minor__title_bog_dock_card_app_13 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['title'] >
+	>
+	type $mol_button_minor__click_bog_dock_card_app_14 = $mol_type_enforce<
+		ReturnType< $bog_dock_card_app['retry'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_copy__title_bog_dock_card_app_15 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_copy['title'] >
 	>
-	type $mol_button_copy__text_bog_dock_card_app_13 = $mol_type_enforce<
+	type $mol_button_copy__text_bog_dock_card_app_16 = $mol_type_enforce<
 		ReturnType< $bog_dock_card_app['share'] >
 		,
 		ReturnType< $mol_button_copy['text'] >
 	>
-	type $mol_button_major__title_bog_dock_card_app_14 = $mol_type_enforce<
+	type $mol_button_major__title_bog_dock_card_app_17 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_major['title'] >
 	>
-	type $mol_button_major__click_bog_dock_card_app_15 = $mol_type_enforce<
+	type $mol_button_major__click_bog_dock_card_app_18 = $mol_type_enforce<
 		ReturnType< $bog_dock_card_app['create'] >
 		,
 		ReturnType< $mol_button_major['click'] >
 	>
-	type $mol_list__rows_bog_dock_card_app_16 = $mol_type_enforce<
+	type $mol_list__rows_bog_dock_card_app_19 = $mol_type_enforce<
 		ReturnType< $bog_dock_card_app['rows'] >
 		,
 		ReturnType< $mol_list['rows'] >
@@ -46243,6 +46273,10 @@ declare namespace $ {
 		Name_edit( ): $mol_string
 		hint_edit( next?: string ): string
 		Hint_edit( ): $mol_string
+		status( ): string
+		Status( ): $mol_paragraph
+		retry( next?: any ): any
+		Retry( ): $mol_button_minor
 		share( ): string
 		Share( ): $mol_button_copy
 		create( next?: any ): any
@@ -46253,6 +46287,10 @@ declare namespace $ {
 		plugins( ): readonly(any)[]
 		tools( ): readonly(any)[]
 		body( ): readonly(any)[]
+		attempt( next?: number ): number
+		status_saving( ): string
+		status_failed( ): string
+		status_search( ): string
 	}
 	
 }
@@ -46262,7 +46300,13 @@ declare namespace $.$$ {
     class $bog_dock_card_app extends $.$bog_dock_card_app {
         link(next?: string): string;
         subj(): $giper_baza_flex_subj | null;
-        rows(): $mol_button_major[] | ($.$mol_string | $.$mol_button_copy | $.$bog_dock_card)[];
+        rows(): ($.$mol_string | $.$mol_paragraph | $mol_button_minor | $.$mol_button_copy | $.$bog_dock_card)[];
+        state(): 'search' | 'saving' | 'failed' | 'ready';
+        status(): string;
+        subj_editable(): boolean;
+        delivered(): boolean;
+        push(land: $giper_baza_land): Promise<boolean>;
+        retry(): null;
         editable(): boolean;
         icon_edit(next?: string): string;
         name_edit(next?: string): string;

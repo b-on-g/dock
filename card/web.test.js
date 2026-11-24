@@ -5985,9 +5985,6 @@ var $;
 
 ;
 "use strict";
-
-;
-"use strict";
 var $;
 (function ($_1) {
     $mol_test_mocks.push($ => {
@@ -6006,6 +6003,9 @@ var $;
         $.$mol_locale = $mol_locale_mock;
     });
 })($ || ($ = {}));
+
+;
+"use strict";
 
 ;
 "use strict";
@@ -7480,8 +7480,47 @@ var $;
                 await $mol_wire_async(subj).name('Second');
                 $mol_assert_equal(await $mol_wire_async(card).name(), 'Second');
             },
+            async 'profile from ID wins over foreign name in the root of home'($) {
+                const land = await $mol_wire_async(() => {
+                    const land = $.$giper_baza_glob.land_grab();
+                    new $mol_wire_atom('bog_dock_card_test_profile', () => $.$giper_baza_glob.Land(land.link())).fresh();
+                    return land;
+                })();
+                const dict = land.Data($giper_baza_dict);
+                await $mol_wire_async(() => dict.dive('Name', $giper_baza_atom, 'auto').vary('Gram'))();
+                const card = $bog_dock_card.make({ $, link: () => land.link().str });
+                $mol_assert_equal(await $mol_wire_async(card).name(), 'Gram');
+                await $mol_wire_async(() => dict.dive('bog_id', $giper_baza_dict, 'auto').dive('Name', $giper_baza_atom, 'auto').vary('Anna'))();
+                $mol_assert_equal(await $mol_wire_async(card).name(), 'Anna');
+                $mol_assert_equal(await $mol_wire_async(card).icon(), '👤');
+            },
         });
     })($$ = $_1.$$ || ($_1.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_test({
+        'land covers faces only when it has the latest time and all units of every peer'() {
+            const master = new $giper_baza_face_map;
+            const land = new $giper_baza_face_map;
+            $mol_assert_equal($bog_id_land_covers(land, master), true);
+            master.peer_time('peer', 2, 1);
+            $mol_assert_equal($bog_id_land_covers(land, master), false);
+            land.peer_time('peer', 2, 0);
+            $mol_assert_equal($bog_id_land_covers(land, master), false);
+            land.peer_time('peer', 2, 1);
+            land.peer_time('other', 3, 0);
+            $mol_assert_equal($bog_id_land_covers(land, master), true);
+            master.peer_summ('peer', 2);
+            land.peer_summ('peer', 1);
+            $mol_assert_equal($bog_id_land_covers(land, master), false);
+            land.peer_summ('peer', 2);
+            $mol_assert_equal($bog_id_land_covers(land, master), true);
+        },
+    });
 })($ || ($ = {}));
 
 

@@ -2744,7 +2744,7 @@ declare namespace $ {
 		ReturnType< $giper_web_bar_link['icon'] >
 	>
 	type $giper_web_bar_link__title_bog_dock_bar_25 = $mol_type_enforce<
-		ReturnType< $bog_dock_bar['title'] >
+		string
 		,
 		ReturnType< $giper_web_bar_link['title'] >
 	>
@@ -2759,7 +2759,7 @@ declare namespace $ {
 		ReturnType< $giper_web_bar_link['icon'] >
 	>
 	type $giper_web_bar_link__title_bog_dock_bar_28 = $mol_type_enforce<
-		string
+		ReturnType< $bog_dock_bar['title'] >
 		,
 		ReturnType< $giper_web_bar_link['title'] >
 	>
@@ -2787,8 +2787,8 @@ declare namespace $ {
 		Merch( ): $giper_web_bar_link
 		Doodle( ): $giper_web_bar_link
 		Atelier( ): $giper_web_bar_link
-		Dock( ): $giper_web_bar_link
 		Giper( ): $giper_web_bar_link
+		Dock( ): $giper_web_bar_link
 		Dock_sources( ): $mol_link_source
 		title( ): string
 		apps( ): readonly(any)[]
@@ -3052,11 +3052,15 @@ declare namespace $ {
 	>
 	export class $bog_dock_app extends $mol_view {
 		Theme( ): $mol_theme_auto
+		wide( ): boolean
 		Bar( ): $bog_dock_bar
 		home_title( ): ReturnType< ReturnType< $bog_dock_app['Home'] >['title'] >
 		Home( ): $bog_dock_home
 		plugins( ): readonly(any)[]
 		title( ): ReturnType< $bog_dock_app['home_title'] >
+		attr( ): ({ 
+			'bog_dock_app_wide': ReturnType< $bog_dock_app['wide'] >,
+		})  & ReturnType< $mol_view['attr'] >
 		sub( ): readonly(any)[]
 	}
 	
@@ -3066,8 +3070,12 @@ declare namespace $ {
 declare namespace $.$$ {
     class $bog_dock_app extends $.$bog_dock_app {
         embedded(): boolean;
+        wide(): boolean;
         sub(): ($.$bog_dock_home | $bog_dock_bar)[];
     }
+}
+
+declare namespace $ {
 }
 
 export = $;

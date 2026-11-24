@@ -6653,7 +6653,7 @@ var $;
 		Doodle(){
 			const obj = new this.$.$giper_web_bar_link();
 			(obj.title) = () => ("Doodle");
-			(obj.uri) = () => ("https://b-on-g.github.io/doodle/");
+			(obj.uri) = () => ("https://b-on-g.github.io/doodle/app/");
 			(obj.icon) = () => ("bog/doodle/assets/logo.svg");
 			return obj;
 		}
@@ -6664,18 +6664,18 @@ var $;
 			(obj.icon) = () => ("bog/atelier/assets/logo.svg");
 			return obj;
 		}
+		Giper(){
+			const obj = new this.$.$giper_web_bar_link();
+			(obj.title) = () => ("Giper Web");
+			(obj.uri) = () => ("https://web.giper.dev/#query={query}");
+			(obj.icon) = () => ("giper/web/logo/logo.svg");
+			return obj;
+		}
 		Dock(){
 			const obj = new this.$.$giper_web_bar_link();
 			(obj.title) = () => ((this.title()));
 			(obj.uri) = () => ("https://b-on-g.github.io/dock/");
 			(obj.icon) = () => ("bog/dock/logo/logo.svg");
-			return obj;
-		}
-		Giper(){
-			const obj = new this.$.$giper_web_bar_link();
-			(obj.title) = () => ("Giper Web");
-			(obj.uri) = () => ("https://web.giper.dev/");
-			(obj.icon) = () => ("giper/web/logo/logo.svg");
 			return obj;
 		}
 		Dock_sources(){
@@ -6696,15 +6696,14 @@ var $;
 				(this.Merch()), 
 				(this.Doodle()), 
 				(this.Atelier()), 
-				(this.Search()), 
-				(this.Player())
+				(this.Giper())
 			];
 		}
 		head(){
 			return [(this.Dock())];
 		}
 		foot(){
-			return [(this.Giper()), (this.Dock_sources())];
+			return [(this.Dock_sources())];
 		}
 	};
 	($mol_mem(($.$bog_dock_bar.prototype), "Id"));
@@ -6715,8 +6714,8 @@ var $;
 	($mol_mem(($.$bog_dock_bar.prototype), "Merch"));
 	($mol_mem(($.$bog_dock_bar.prototype), "Doodle"));
 	($mol_mem(($.$bog_dock_bar.prototype), "Atelier"));
-	($mol_mem(($.$bog_dock_bar.prototype), "Dock"));
 	($mol_mem(($.$bog_dock_bar.prototype), "Giper"));
+	($mol_mem(($.$bog_dock_bar.prototype), "Dock"));
 	($mol_mem(($.$bog_dock_bar.prototype), "Dock_sources"));
 
 
@@ -7215,6 +7214,9 @@ var $;
 			const obj = new this.$.$mol_theme_auto();
 			return obj;
 		}
+		wide(){
+			return false;
+		}
 		Bar(){
 			const obj = new this.$.$bog_dock_bar();
 			return obj;
@@ -7232,6 +7234,9 @@ var $;
 		}
 		title(){
 			return (this.home_title());
+		}
+		attr(){
+			return {...(super.attr()), "bog_dock_app_wide": (this.wide())};
 		}
 		sub(){
 			return [(this.Bar()), (this.Home())];
@@ -7257,12 +7262,24 @@ var $;
                 const win = this.$.$mol_dom_context;
                 return win.parent !== win.self;
             }
+            wide() {
+                return !this.embedded() && this.$.$mol_media.match('(min-width: 60rem)');
+            }
             sub() {
-                return [this.embedded() ? this.Bar() : this.Home()];
+                if (this.embedded())
+                    return [this.Bar()];
+                return [...this.wide() ? [this.Bar()] : [], this.Home()];
             }
         }
         $$.$bog_dock_app = $bog_dock_app;
     })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("bog/dock/app/app.view.css", "[bog_dock_app_wide=\"true\"] > [bog_dock_app_bar] {\n\tposition: sticky;\n\ttop: 0;\n\twidth: 4rem;\n\theight: 100dvh;\n}\n");
 })($ || ($ = {}));
 
 

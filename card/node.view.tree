@@ -22,6 +22,7 @@ $mol_link $mol_view
 $bog_dock_card $mol_link
 	link \
 	host \https://b-on-g.github.io/dock/card/
+	profile_kind @ \Profile
 	target \_blank
 	sub /
 		<= Icon $mol_view
@@ -208,6 +209,13 @@ $mol_string $mol_view
 			mod_ctrl <= submit_with_ctrl false
 			key * enter? <=> submit? null
 
+$mol_paragraph $mol_view
+	line_height 24
+	letter_width 7
+	width_limit +Infinity
+	row_width 0
+	sub / <= title
+
 $mol_icon_clipboard $mol_icon path \M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3
 
 $mol_icon_clipboard_outline $mol_icon path \M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M7,7H17V5H19V19H5V5H7V7Z
@@ -266,9 +274,18 @@ $bog_dock_card_app $mol_page
 					hint @ \Description
 					enabled <= editable
 					value? <=> hint_edit? \
+				<= Status $mol_paragraph
+					title <= status \
+				<= Retry $mol_button_minor
+					title @ \Try again
+					click? <=> retry? null
 				<= Share $mol_button_copy
 					title @ \Copy link
 					text <= share \
 				<= Create $mol_button_major
 					title @ \Create object
 					click? <=> create? null
+	attempt? 0
+	status_saving @ \Saving to network…
+	status_failed @ \Not delivered to network
+	status_search @ \Searching for object…
