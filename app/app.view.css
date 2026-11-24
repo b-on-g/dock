@@ -1,0 +1,6 @@
+[bog_dock_app_wide="true"] > [bog_dock_app_bar] {
+	position: sticky;
+	top: 0;
+	width: 4rem;
+	height: 100dvh;
+}

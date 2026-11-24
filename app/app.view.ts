@@ -6,8 +6,13 @@ namespace $.$$ {
 			return win.parent !== win.self
 		}
 
+		wide() {
+			return !this.embedded() && this.$.$mol_media.match( '(min-width: 60rem)' )
+		}
+
 		sub() {
-			return [ this.embedded() ? this.Bar() : this.Home() ]
+			if( this.embedded() ) return [ this.Bar() ]
+			return [ ... this.wide() ? [ this.Bar() ] : [], this.Home() ]
 		}
 
 	}

@@ -1,2 +1,5 @@
 $bog_dock_frame $giper_web_frame
 	host \https://b-on-g.github.io/dock/
+	lights true
+	clipboard_read false
+	clipboard_write false

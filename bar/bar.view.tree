@@ -27,23 +27,21 @@ $bog_dock_bar $giper_web_bar
 			icon \bog/dock/logo/merch.svg
 		<= Doodle $giper_web_bar_link
 			title \Doodle
-			uri \https://b-on-g.github.io/doodle/
+			uri \https://b-on-g.github.io/doodle/app/
 			icon \bog/doodle/assets/logo.svg
 		<= Atelier $giper_web_bar_link
 			title \Atelier
 			uri \https://b-on-g.github.io/atelier/
 			icon \bog/atelier/assets/logo.svg
-		<= Search
-		<= Player
+		<= Giper $giper_web_bar_link
+			title \Giper Web
+			uri \https://web.giper.dev/#query={query}
+			icon \giper/web/logo/logo.svg
 	head /
 		<= Dock $giper_web_bar_link
 			title <= title
 			uri \https://b-on-g.github.io/dock/
 			icon \bog/dock/logo/logo.svg
 	foot /
-		<= Giper $giper_web_bar_link
-			title \Giper Web
-			uri \https://web.giper.dev/
-			icon \giper/web/logo/logo.svg
 		<= Dock_sources $mol_link_source
 			uri \https://github.com/b-on-g/dock

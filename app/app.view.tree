@@ -2,6 +2,9 @@ $bog_dock_app $mol_view
 	plugins /
 		<= Theme $mol_theme_auto
 	title <= home_title
+	attr *
+		^
+		bog_dock_app_wide <= wide false
 	sub /
 		<= Bar $bog_dock_bar
 		<= Home $bog_dock_home

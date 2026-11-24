@@ -1,0 +1,27 @@
+[bog_dock_side][mol_view_root] {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 4rem;
+	height: 100%;
+	transition: none;
+}
+
+[bog_dock_side][mol_view_root][bog_dock_side_shown="true"] {
+	display: flex;
+}
+
+[bog_dock_side_frame] {
+	height: 100%;
+}
+
+body:has( > [bog_dock_side_shown="true"] ) {
+	padding-left: 4rem;
+}
+
+@media print {
+	[bog_dock_side][mol_view_root][bog_dock_side_shown="true"] { display: none; }
+	body:has( > [bog_dock_side_shown="true"] ) { padding-left: 0; }
+}

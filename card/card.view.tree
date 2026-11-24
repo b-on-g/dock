@@ -1,6 +1,7 @@
 $bog_dock_card $mol_link
 	link \
 	host \https://b-on-g.github.io/dock/card/
+	profile_kind @ \Profile
 	target \_blank
 	sub /
 		<= Icon $mol_view

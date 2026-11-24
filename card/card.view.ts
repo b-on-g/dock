@@ -22,8 +22,18 @@ namespace $.$$ {
 		}
 
 		@ $mol_mem
+		profile() {
+			return this.pawn()?.dive( 'bog_id', $giper_baza_dict ) ?? null
+		}
+
+		@ $mol_mem
+		profile_name() {
+			return this.pick( this.profile(), 'Name' )
+		}
+
+		@ $mol_mem
 		name() {
-			return this.pick( this.pawn(), 'Subj:Name', 'Title', 'Name' )
+			return this.profile_name() || this.pick( this.pawn(), 'Subj:Name', 'Title', 'Name' )
 		}
 
 		@ $mol_mem
@@ -33,11 +43,13 @@ namespace $.$$ {
 
 		@ $mol_mem
 		kind() {
+			if( this.profile_name() ) return this.profile_kind()
 			return this.pick( this.meta(), 'Subj:Name' )
 		}
 
 		@ $mol_mem
 		icon() {
+			if( this.profile_name() ) return '👤'
 			return this.pick( this.pawn(), 'Subj:Icon', 'Icon' ) || this.pick( this.meta(), 'Subj:Icon' ) || '💠'
 		}
 

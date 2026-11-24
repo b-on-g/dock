@@ -13,11 +13,60 @@ namespace $.$$ {
 
 		rows() {
 			if( !this.subj() ) return [ this.Create() ]
+			const state = this.state()
 			return [
-				this.Card(),
+				... state === 'search' ? [] : [ this.Card() ],
 				... this.editable() ? [ this.Icon_edit(), this.Name_edit(), this.Hint_edit() ] : [],
-				this.Share(),
+				... state === 'ready' ? [] : [ this.Status() ],
+				... state === 'failed' ? [ this.Retry() ] : [],
+				... state === 'ready' ? [ this.Share() ] : [],
 			]
+		}
+
+		state(): 'search' | 'saving' | 'failed' | 'ready' {
+			try {
+				if( !this.editable() ) return this.Card().name() ? 'ready' : 'search'
+				return this.delivered() ? 'ready' : 'failed'
+			} catch( error ) {
+				if( !$mol_promise_like( error ) ) throw error
+				return this.subj_editable() ? 'saving' : 'search'
+			}
+		}
+
+		status() {
+			const state = this.state()
+			if( state === 'saving' ) return this.status_saving()
+			if( state === 'failed' ) return this.status_failed()
+			return this.status_search()
+		}
+
+		subj_editable() {
+			try {
+				return this.editable()
+			} catch( error ) {
+				if( !$mol_promise_like( error ) ) throw error
+				return false
+			}
+		}
+
+		@ $mol_mem
+		delivered() {
+			const subj = this.subj()!
+			this.attempt()
+			subj.name()
+			subj.icon()
+			subj.hint()
+			this.$.$mol_wait_timeout( 500 )
+			return $mol_wire_sync( this as $bog_dock_card_app ).push( subj.land() )
+		}
+
+		push( land: $giper_baza_land ) {
+			return this.$.$bog_id_land_push([ land ])
+		}
+
+		retry() {
+			this.attempt( this.attempt() + 1 )
+			return null
 		}
 
 		editable() {
