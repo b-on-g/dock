@@ -1,0 +1,3 @@
+$bog_dock_skin $mol_plugin
+	attr *
+		bog_dock_skin <= mode \light

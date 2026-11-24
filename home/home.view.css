@@ -3,8 +3,8 @@
 }
 
 [bog_dock_home_stage] {
-	width: min(94vw, 84vh);
-	height: min(94vw, 84vh);
+	width: min(94vw, 76vh);
+	height: min(94vw, 76vh);
 }
 
 [bog_dock_home_node_icon] {
@@ -33,11 +33,11 @@
 }
 
 [bog_dock_home_kind="login"] {
-	stroke: #8b5cf6;
+	stroke: var(--mol_theme_special);
 }
 
 [bog_dock_home_kind="embed"] {
-	stroke: #3b82f6;
+	stroke: var(--mol_theme_control);
 }
 
 [bog_dock_home_dim="true"] {
@@ -56,4 +56,8 @@
 	padding: 0 .5rem;
 	border-radius: var(--mol_gap_round);
 	background: var(--mol_theme_back);
+}
+
+[bog_dock_home_head] {
+	font-family: var(--bog_dock_head);
 }

@@ -28,7 +28,8 @@ namespace $.$$ {
 			},
 			whiteSpace: 'nowrap',
 			font: {
-				size: '.75rem',
+				size: '.8125rem',
+				weight: 500,
 			},
 		},
 

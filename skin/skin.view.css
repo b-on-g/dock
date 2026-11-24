@@ -1,0 +1,48 @@
+@font-face {
+	font-family: 'Bog Dock Head';
+	font-weight: 400 700;
+	font-display: swap;
+	src: url(bog/dock/skin/fonts/garamond.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122;
+}
+
+@font-face {
+	font-family: 'Bog Dock Body';
+	font-weight: 400 700;
+	font-display: swap;
+	src: url(bog/dock/skin/fonts/inter.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122;
+}
+
+[bog_dock_skin][bog_dock_skin] {
+	--bog_dock_head: 'Bog Dock Head', Georgia, serif;
+	font-family: 'Bog Dock Body', system-ui, sans-serif;
+}
+
+[bog_dock_skin][bog_dock_skin="light"] {
+	--mol_theme_back: #faf9f7;
+	--mol_theme_card: #ffffff;
+	--mol_theme_field: #f4f4f5;
+	--mol_theme_hover: #0000000a;
+	--mol_theme_text: #09090b;
+	--mol_theme_shade: #71717a;
+	--mol_theme_line: #e4e4e7;
+	--mol_theme_focus: hsl( 210, 72%, 36% );
+	--mol_theme_control: hsl( 210, 68%, 42% );
+	--mol_theme_current: hsl( 26, 82%, 44% );
+	--mol_theme_special: hsl( 26, 82%, 44% );
+}
+
+[bog_dock_skin][bog_dock_skin="dark"] {
+	--mol_theme_back: #18181b;
+	--mol_theme_card: #09090b;
+	--mol_theme_field: #27272a;
+	--mol_theme_hover: #ffffff0d;
+	--mol_theme_text: #d4d4d8;
+	--mol_theme_shade: #a1a1aa;
+	--mol_theme_line: #27272a;
+	--mol_theme_focus: hsl( 210, 76%, 72% );
+	--mol_theme_control: hsl( 210, 72%, 64% );
+	--mol_theme_current: hsl( 30, 85%, 60% );
+	--mol_theme_special: hsl( 30, 85%, 60% );
+}

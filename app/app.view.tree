@@ -1,6 +1,7 @@
 $bog_dock_app $mol_view
 	plugins /
 		<= Theme $mol_theme_auto
+		<= Skin $bog_dock_skin
 	title <= home_title
 	attr *
 		^

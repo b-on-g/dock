@@ -2,6 +2,7 @@ $bog_dock_card_app $mol_page
 	title @ \Object card
 	plugins /
 		<= Theme $mol_theme_auto
+		<= Skin $bog_dock_skin
 	tools /
 		<= Lights $mol_lights_toggle
 	body /

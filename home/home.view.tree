@@ -3,6 +3,15 @@ $bog_dock_home $mol_view
 	bar $bog_dock_bar
 	focus? -1
 	sub /
+		<= Head $mol_view
+			dom_name \h1
+			sub /
+				<= Head_own $mol_view
+					sub /
+						\Bog
+				<= Head_accent $mol_view
+					sub /
+						\Dock
 		<= Stage $mol_view
 			sub <= stage /$mol_view
 				<= Lines $mol_svg_root
