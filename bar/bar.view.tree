@@ -1,0 +1,45 @@
+$bog_dock_bar $giper_web_bar
+	title @ \Bog Dock
+	apps /
+		<= Id $giper_web_bar_link
+			title \ID
+			uri \https://dev-cmyser.github.io/id/
+			icon \bog/dock/logo/id.svg
+		<= Gram $giper_web_bar_link
+			title \Gram
+			uri \https://b-on-g.github.io/gram/
+			icon \bog/gram/logo/logo.svg
+		<= Todo $giper_web_bar_link
+			title \Microtodo
+			uri \https://b-on-g.github.io/microtodo/#!search={query}
+			icon \bog/microtodo/assets/logo.svg
+		<= Molefy $giper_web_bar_link
+			title \Molefy
+			uri \https://b-on-g.github.io/molefy/
+			icon \bog/molefy/assets/logo.svg
+		<= Music $giper_web_bar_link
+			title \Music
+			uri \https://b-on-g.github.io/music/
+			icon \bog/music/app/favicon.svg
+		<= Doodle $giper_web_bar_link
+			title \Doodle
+			uri \https://b-on-g.github.io/doodle/
+			icon \bog/doodle/assets/logo.svg
+		<= Atelier $giper_web_bar_link
+			title \Atelier
+			uri \https://b-on-g.github.io/atelier/
+			icon \bog/atelier/assets/logo.svg
+		<= Search
+		<= Player
+	head /
+		<= Dock $giper_web_bar_link
+			title <= title
+			uri \https://b-on-g.github.io/dock/
+			icon \bog/dock/logo/logo.svg
+	foot /
+		<= Giper $giper_web_bar_link
+			title \Giper Web
+			uri \https://web.giper.dev/
+			icon \giper/web/logo/logo.svg
+		<= Dock_sources $mol_link_source
+			uri \https://github.com/b-on-g/dock
