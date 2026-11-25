@@ -175,3 +175,5 @@
 	deploy \/bog/doodle/assets/logo.svg
 	deploy \/bog/atelier/assets/logo.svg
 	deploy \/giper/web/logo/logo.svg
+\/bog/dock/app
+	deploy \/bog/dock/og/og.png
