@@ -5,7 +5,7 @@ namespace $.$$ {
 	export class $bog_dock_home extends $.$bog_dock_home {
 
 		apps() {
-			return this.bar().apps() as readonly $.$$.$giper_web_bar_link[]
+			return this.bar().apps() as readonly $.$$.$bog_dock_bar_link[]
 		}
 
 		@ $mol_mem
@@ -13,7 +13,11 @@ namespace $.$$ {
 			const bar = this.bar()
 			const apps = this.apps() as readonly unknown[]
 			const pairs = [
+				[ bar.Id(), bar.Gram(), 'login' ],
+				[ bar.Id(), bar.Music(), 'login' ],
+				[ bar.Id(), bar.Todo(), 'login' ],
 				[ bar.Id(), bar.Molefy(), 'login' ],
+				[ bar.Id(), bar.Jj(), 'login' ],
 				[ bar.Id(), bar.Merch(), 'login' ],
 				[ bar.Gram(), bar.Music(), 'embed' ],
 			] as [ unknown, unknown, Kind ][]
@@ -99,7 +103,7 @@ namespace $.$$ {
 					.map( link => this.node_title( link.from === focus ? link.to : link.from ) )
 				return names.length ? [ `${ labels[ kind ] }: ${ names.join( ', ' ) }` ] : []
 			} )
-			return `${ this.node_title( focus ) }. ${ parts.join( '; ' ) || this.label_none() }`
+			return `${ this.apps()[ focus ].about_hint() }. ${ parts.join( '; ' ) || this.label_none() }`
 		}
 
 	}

@@ -11,7 +11,10 @@ namespace $.$$ {
 
 			home.focus( 0 )
 			const bright = home.apps().map( ( _, i )=> i ).filter( i => !home.node_dim( i ) ).map( i => home.node_title( i ) )
-			$mol_assert_equal( bright, [ 'ID', 'Molefy', 'Merchquarium' ] )
+			$mol_assert_equal( bright, [ 'ID', 'Gram', 'Music', 'Microtodo', 'Molefy', 'JJ', 'Merchquarium' ] )
+
+			$mol_assert_equal( home.apps().every( app => Boolean( app.about() ) ), true )
+			$mol_assert_equal( home.caption().startsWith( home.apps()[ 0 ].about_hint() ), true )
 
 		},
 
