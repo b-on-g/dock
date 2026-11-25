@@ -2618,6 +2618,33 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	type $mol_image__uri_bog_dock_bar_link_1 = $mol_type_enforce<
+		ReturnType< $bog_dock_bar_link['icon'] >
+		,
+		ReturnType< $mol_image['uri'] >
+	>
+	type $mol_image__hint_bog_dock_bar_link_2 = $mol_type_enforce<
+		ReturnType< $bog_dock_bar_link['about_hint'] >
+		,
+		ReturnType< $mol_image['hint'] >
+	>
+	export class $bog_dock_bar_link extends $giper_web_bar_link {
+		about_hint( ): string
+		about( ): string
+		Icon( ): $mol_image
+	}
+	
+}
+
+//# sourceMappingURL=link.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_dock_bar_link extends $.$bog_dock_bar_link {
+        about_hint(): string;
+    }
+}
+
+declare namespace $ {
+
 	type $mol_image__uri_bog_dock_home_node_1 = $mol_type_enforce<
 		ReturnType< $bog_dock_home_node['icon'] >
 		,
@@ -2676,173 +2703,265 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $giper_web_bar_link__title_bog_dock_bar_1 = $mol_type_enforce<
+	type $bog_dock_bar_link__title_bog_dock_bar_1 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['title'] >
+		ReturnType< $bog_dock_bar_link['title'] >
 	>
-	type $giper_web_bar_link__uri_bog_dock_bar_2 = $mol_type_enforce<
+	type $bog_dock_bar_link__about_bog_dock_bar_2 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['uri'] >
+		ReturnType< $bog_dock_bar_link['about'] >
 	>
-	type $giper_web_bar_link__icon_bog_dock_bar_3 = $mol_type_enforce<
+	type $bog_dock_bar_link__uri_bog_dock_bar_3 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['icon'] >
+		ReturnType< $bog_dock_bar_link['uri'] >
 	>
-	type $giper_web_bar_link__title_bog_dock_bar_4 = $mol_type_enforce<
+	type $bog_dock_bar_link__icon_bog_dock_bar_4 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['title'] >
+		ReturnType< $bog_dock_bar_link['icon'] >
 	>
-	type $giper_web_bar_link__uri_bog_dock_bar_5 = $mol_type_enforce<
+	type $bog_dock_bar_link__title_bog_dock_bar_5 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['uri'] >
+		ReturnType< $bog_dock_bar_link['title'] >
 	>
-	type $giper_web_bar_link__icon_bog_dock_bar_6 = $mol_type_enforce<
+	type $bog_dock_bar_link__about_bog_dock_bar_6 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['icon'] >
+		ReturnType< $bog_dock_bar_link['about'] >
 	>
-	type $giper_web_bar_link__title_bog_dock_bar_7 = $mol_type_enforce<
+	type $bog_dock_bar_link__uri_bog_dock_bar_7 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['title'] >
+		ReturnType< $bog_dock_bar_link['uri'] >
 	>
-	type $giper_web_bar_link__uri_bog_dock_bar_8 = $mol_type_enforce<
+	type $bog_dock_bar_link__icon_bog_dock_bar_8 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['uri'] >
+		ReturnType< $bog_dock_bar_link['icon'] >
 	>
-	type $giper_web_bar_link__icon_bog_dock_bar_9 = $mol_type_enforce<
+	type $bog_dock_bar_link__title_bog_dock_bar_9 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['icon'] >
+		ReturnType< $bog_dock_bar_link['title'] >
 	>
-	type $giper_web_bar_link__title_bog_dock_bar_10 = $mol_type_enforce<
+	type $bog_dock_bar_link__about_bog_dock_bar_10 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['title'] >
+		ReturnType< $bog_dock_bar_link['about'] >
 	>
-	type $giper_web_bar_link__uri_bog_dock_bar_11 = $mol_type_enforce<
+	type $bog_dock_bar_link__uri_bog_dock_bar_11 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['uri'] >
+		ReturnType< $bog_dock_bar_link['uri'] >
 	>
-	type $giper_web_bar_link__icon_bog_dock_bar_12 = $mol_type_enforce<
+	type $bog_dock_bar_link__icon_bog_dock_bar_12 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['icon'] >
+		ReturnType< $bog_dock_bar_link['icon'] >
 	>
-	type $giper_web_bar_link__title_bog_dock_bar_13 = $mol_type_enforce<
+	type $bog_dock_bar_link__title_bog_dock_bar_13 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['title'] >
+		ReturnType< $bog_dock_bar_link['title'] >
 	>
-	type $giper_web_bar_link__uri_bog_dock_bar_14 = $mol_type_enforce<
+	type $bog_dock_bar_link__about_bog_dock_bar_14 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['uri'] >
+		ReturnType< $bog_dock_bar_link['about'] >
 	>
-	type $giper_web_bar_link__icon_bog_dock_bar_15 = $mol_type_enforce<
+	type $bog_dock_bar_link__uri_bog_dock_bar_15 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['icon'] >
+		ReturnType< $bog_dock_bar_link['uri'] >
 	>
-	type $giper_web_bar_link__title_bog_dock_bar_16 = $mol_type_enforce<
+	type $bog_dock_bar_link__icon_bog_dock_bar_16 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['title'] >
+		ReturnType< $bog_dock_bar_link['icon'] >
 	>
-	type $giper_web_bar_link__uri_bog_dock_bar_17 = $mol_type_enforce<
+	type $bog_dock_bar_link__title_bog_dock_bar_17 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['uri'] >
+		ReturnType< $bog_dock_bar_link['title'] >
 	>
-	type $giper_web_bar_link__icon_bog_dock_bar_18 = $mol_type_enforce<
+	type $bog_dock_bar_link__about_bog_dock_bar_18 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['icon'] >
+		ReturnType< $bog_dock_bar_link['about'] >
 	>
-	type $giper_web_bar_link__title_bog_dock_bar_19 = $mol_type_enforce<
+	type $bog_dock_bar_link__uri_bog_dock_bar_19 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['title'] >
+		ReturnType< $bog_dock_bar_link['uri'] >
 	>
-	type $giper_web_bar_link__uri_bog_dock_bar_20 = $mol_type_enforce<
+	type $bog_dock_bar_link__icon_bog_dock_bar_20 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['uri'] >
+		ReturnType< $bog_dock_bar_link['icon'] >
 	>
-	type $giper_web_bar_link__icon_bog_dock_bar_21 = $mol_type_enforce<
+	type $bog_dock_bar_link__title_bog_dock_bar_21 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['icon'] >
+		ReturnType< $bog_dock_bar_link['title'] >
 	>
-	type $giper_web_bar_link__title_bog_dock_bar_22 = $mol_type_enforce<
+	type $bog_dock_bar_link__about_bog_dock_bar_22 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['title'] >
+		ReturnType< $bog_dock_bar_link['about'] >
 	>
-	type $giper_web_bar_link__uri_bog_dock_bar_23 = $mol_type_enforce<
+	type $bog_dock_bar_link__uri_bog_dock_bar_23 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['uri'] >
+		ReturnType< $bog_dock_bar_link['uri'] >
 	>
-	type $giper_web_bar_link__icon_bog_dock_bar_24 = $mol_type_enforce<
+	type $bog_dock_bar_link__icon_bog_dock_bar_24 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['icon'] >
+		ReturnType< $bog_dock_bar_link['icon'] >
 	>
-	type $giper_web_bar_link__title_bog_dock_bar_25 = $mol_type_enforce<
+	type $bog_dock_bar_link__title_bog_dock_bar_25 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['title'] >
+		ReturnType< $bog_dock_bar_link['title'] >
 	>
-	type $giper_web_bar_link__uri_bog_dock_bar_26 = $mol_type_enforce<
+	type $bog_dock_bar_link__about_bog_dock_bar_26 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['uri'] >
+		ReturnType< $bog_dock_bar_link['about'] >
 	>
-	type $giper_web_bar_link__icon_bog_dock_bar_27 = $mol_type_enforce<
+	type $bog_dock_bar_link__uri_bog_dock_bar_27 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['icon'] >
+		ReturnType< $bog_dock_bar_link['uri'] >
 	>
-	type $giper_web_bar_link__title_bog_dock_bar_28 = $mol_type_enforce<
+	type $bog_dock_bar_link__icon_bog_dock_bar_28 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['icon'] >
+	>
+	type $bog_dock_bar_link__title_bog_dock_bar_29 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['title'] >
+	>
+	type $bog_dock_bar_link__about_bog_dock_bar_30 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['about'] >
+	>
+	type $bog_dock_bar_link__uri_bog_dock_bar_31 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['uri'] >
+	>
+	type $bog_dock_bar_link__icon_bog_dock_bar_32 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['icon'] >
+	>
+	type $bog_dock_bar_link__title_bog_dock_bar_33 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['title'] >
+	>
+	type $bog_dock_bar_link__about_bog_dock_bar_34 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['about'] >
+	>
+	type $bog_dock_bar_link__uri_bog_dock_bar_35 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['uri'] >
+	>
+	type $bog_dock_bar_link__icon_bog_dock_bar_36 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['icon'] >
+	>
+	type $bog_dock_bar_link__title_bog_dock_bar_37 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['title'] >
+	>
+	type $bog_dock_bar_link__about_bog_dock_bar_38 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['about'] >
+	>
+	type $bog_dock_bar_link__uri_bog_dock_bar_39 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['uri'] >
+	>
+	type $bog_dock_bar_link__icon_bog_dock_bar_40 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['icon'] >
+	>
+	type $bog_dock_bar_link__title_bog_dock_bar_41 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['title'] >
+	>
+	type $bog_dock_bar_link__about_bog_dock_bar_42 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['about'] >
+	>
+	type $bog_dock_bar_link__uri_bog_dock_bar_43 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['uri'] >
+	>
+	type $bog_dock_bar_link__icon_bog_dock_bar_44 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['icon'] >
+	>
+	type $bog_dock_bar_link__title_bog_dock_bar_45 = $mol_type_enforce<
 		ReturnType< $bog_dock_bar['title'] >
 		,
-		ReturnType< $giper_web_bar_link['title'] >
+		ReturnType< $bog_dock_bar_link['title'] >
 	>
-	type $giper_web_bar_link__uri_bog_dock_bar_29 = $mol_type_enforce<
+	type $bog_dock_bar_link__about_bog_dock_bar_46 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['uri'] >
+		ReturnType< $bog_dock_bar_link['about'] >
 	>
-	type $giper_web_bar_link__icon_bog_dock_bar_30 = $mol_type_enforce<
+	type $bog_dock_bar_link__uri_bog_dock_bar_47 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $giper_web_bar_link['icon'] >
+		ReturnType< $bog_dock_bar_link['uri'] >
 	>
-	type $mol_link_source__uri_bog_dock_bar_31 = $mol_type_enforce<
+	type $bog_dock_bar_link__icon_bog_dock_bar_48 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_dock_bar_link['icon'] >
+	>
+	type $mol_link_source__uri_bog_dock_bar_49 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_source['uri'] >
 	>
 	export class $bog_dock_bar extends $giper_web_bar {
 		Skin( ): $bog_dock_skin
-		Id( ): $giper_web_bar_link
-		Gram( ): $giper_web_bar_link
-		Music( ): $giper_web_bar_link
-		Todo( ): $giper_web_bar_link
-		Molefy( ): $giper_web_bar_link
-		Merch( ): $giper_web_bar_link
-		Doodle( ): $giper_web_bar_link
-		Atelier( ): $giper_web_bar_link
-		Giper( ): $giper_web_bar_link
-		Dock( ): $giper_web_bar_link
+		Id( ): $bog_dock_bar_link
+		Gram( ): $bog_dock_bar_link
+		Music( ): $bog_dock_bar_link
+		Todo( ): $bog_dock_bar_link
+		Molefy( ): $bog_dock_bar_link
+		Jj( ): $bog_dock_bar_link
+		Blitz( ): $bog_dock_bar_link
+		Merch( ): $bog_dock_bar_link
+		Doodle( ): $bog_dock_bar_link
+		Atelier( ): $bog_dock_bar_link
+		Giper( ): $bog_dock_bar_link
+		Dock( ): $bog_dock_bar_link
 		Dock_sources( ): $mol_link_source
 		title( ): string
 		plugins( ): readonly(any)[]
@@ -3033,7 +3152,7 @@ declare namespace $ {
 declare namespace $.$$ {
     type Kind = 'login' | 'embed';
     export class $bog_dock_home extends $.$bog_dock_home {
-        apps(): readonly $.$$.$giper_web_bar_link[];
+        apps(): readonly $.$$.$bog_dock_bar_link[];
         links(): {
             from: number;
             to: number;

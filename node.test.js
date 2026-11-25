@@ -6781,77 +6781,140 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$bog_dock_bar_link) = class $bog_dock_bar_link extends ($.$giper_web_bar_link) {
+		about_hint(){
+			return "";
+		}
+		about(){
+			return "";
+		}
+		Icon(){
+			const obj = new this.$.$mol_image();
+			(obj.uri) = () => ((this.icon()));
+			(obj.hint) = () => ((this.about_hint()));
+			return obj;
+		}
+	};
+	($mol_mem(($.$bog_dock_bar_link.prototype), "Icon"));
+
+
+;
+"use strict";
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $bog_dock_bar_link extends $.$bog_dock_bar_link {
+            about_hint() {
+                return [this.title(), this.about()].filter(Boolean).join('. ');
+            }
+        }
+        $$.$bog_dock_bar_link = $bog_dock_bar_link;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$bog_dock_bar) = class $bog_dock_bar extends ($.$giper_web_bar) {
 		Skin(){
 			const obj = new this.$.$bog_dock_skin();
 			return obj;
 		}
 		Id(){
-			const obj = new this.$.$giper_web_bar_link();
+			const obj = new this.$.$bog_dock_bar_link();
 			(obj.title) = () => ("ID");
+			(obj.about) = () => ((this.$.$mol_locale.text("$bog_dock_bar_Id_about")));
 			(obj.uri) = () => ("https://dev-cmyser.github.io/id/");
 			(obj.icon) = () => ("bog/dock/logo/id.svg");
 			return obj;
 		}
 		Gram(){
-			const obj = new this.$.$giper_web_bar_link();
+			const obj = new this.$.$bog_dock_bar_link();
 			(obj.title) = () => ("Gram");
+			(obj.about) = () => ((this.$.$mol_locale.text("$bog_dock_bar_Gram_about")));
 			(obj.uri) = () => ("https://b-on-g.github.io/gram/");
 			(obj.icon) = () => ("bog/gram/logo/logo.svg");
 			return obj;
 		}
 		Music(){
-			const obj = new this.$.$giper_web_bar_link();
+			const obj = new this.$.$bog_dock_bar_link();
 			(obj.title) = () => ("Music");
+			(obj.about) = () => ((this.$.$mol_locale.text("$bog_dock_bar_Music_about")));
 			(obj.uri) = () => ("https://b-on-g.github.io/music/");
 			(obj.icon) = () => ("bog/music/app/favicon.svg");
 			return obj;
 		}
 		Todo(){
-			const obj = new this.$.$giper_web_bar_link();
+			const obj = new this.$.$bog_dock_bar_link();
 			(obj.title) = () => ("Microtodo");
+			(obj.about) = () => ((this.$.$mol_locale.text("$bog_dock_bar_Todo_about")));
 			(obj.uri) = () => ("https://b-on-g.github.io/microtodo/#!search={query}");
 			(obj.icon) = () => ("bog/microtodo/assets/logo.svg");
 			return obj;
 		}
 		Molefy(){
-			const obj = new this.$.$giper_web_bar_link();
+			const obj = new this.$.$bog_dock_bar_link();
 			(obj.title) = () => ("Molefy");
+			(obj.about) = () => ((this.$.$mol_locale.text("$bog_dock_bar_Molefy_about")));
 			(obj.uri) = () => ("https://b-on-g.github.io/molefy/");
 			(obj.icon) = () => ("bog/molefy/assets/logo.svg");
 			return obj;
 		}
+		Jj(){
+			const obj = new this.$.$bog_dock_bar_link();
+			(obj.title) = () => ("JJ");
+			(obj.about) = () => ((this.$.$mol_locale.text("$bog_dock_bar_Jj_about")));
+			(obj.uri) = () => ("https://b-on-g.github.io/jj/");
+			(obj.icon) = () => ("bog/dock/logo/jj.svg");
+			return obj;
+		}
+		Blitz(){
+			const obj = new this.$.$bog_dock_bar_link();
+			(obj.title) = () => ("Blitz");
+			(obj.about) = () => ((this.$.$mol_locale.text("$bog_dock_bar_Blitz_about")));
+			(obj.uri) = () => ("https://b-on-g.github.io/blitz/");
+			(obj.icon) = () => ("bog/dock/logo/blitz.svg");
+			return obj;
+		}
 		Merch(){
-			const obj = new this.$.$giper_web_bar_link();
+			const obj = new this.$.$bog_dock_bar_link();
 			(obj.title) = () => ("Merchquarium");
+			(obj.about) = () => ((this.$.$mol_locale.text("$bog_dock_bar_Merch_about")));
 			(obj.uri) = () => ("https://b-on-g.github.io/merchquarium/");
 			(obj.icon) = () => ("bog/dock/logo/merch.svg");
 			return obj;
 		}
 		Doodle(){
-			const obj = new this.$.$giper_web_bar_link();
+			const obj = new this.$.$bog_dock_bar_link();
 			(obj.title) = () => ("Doodle");
+			(obj.about) = () => ((this.$.$mol_locale.text("$bog_dock_bar_Doodle_about")));
 			(obj.uri) = () => ("https://b-on-g.github.io/doodle/app/");
 			(obj.icon) = () => ("bog/doodle/assets/logo.svg");
 			return obj;
 		}
 		Atelier(){
-			const obj = new this.$.$giper_web_bar_link();
+			const obj = new this.$.$bog_dock_bar_link();
 			(obj.title) = () => ("Atelier");
+			(obj.about) = () => ((this.$.$mol_locale.text("$bog_dock_bar_Atelier_about")));
 			(obj.uri) = () => ("https://b-on-g.github.io/atelier/");
 			(obj.icon) = () => ("bog/atelier/assets/logo.svg");
 			return obj;
 		}
 		Giper(){
-			const obj = new this.$.$giper_web_bar_link();
+			const obj = new this.$.$bog_dock_bar_link();
 			(obj.title) = () => ("Giper Web");
+			(obj.about) = () => ((this.$.$mol_locale.text("$bog_dock_bar_Giper_about")));
 			(obj.uri) = () => ("https://web.giper.dev/#query={query}");
 			(obj.icon) = () => ("giper/web/logo/logo.svg");
 			return obj;
 		}
 		Dock(){
-			const obj = new this.$.$giper_web_bar_link();
+			const obj = new this.$.$bog_dock_bar_link();
 			(obj.title) = () => ((this.title()));
+			(obj.about) = () => ((this.$.$mol_locale.text("$bog_dock_bar_Dock_about")));
 			(obj.uri) = () => ("https://b-on-g.github.io/dock/");
 			(obj.icon) = () => ("bog/dock/logo/logo.svg");
 			return obj;
@@ -6874,6 +6937,8 @@ var $;
 				(this.Music()), 
 				(this.Todo()), 
 				(this.Molefy()), 
+				(this.Jj()), 
+				(this.Blitz()), 
 				(this.Merch()), 
 				(this.Doodle()), 
 				(this.Atelier()), 
@@ -6893,6 +6958,8 @@ var $;
 	($mol_mem(($.$bog_dock_bar.prototype), "Music"));
 	($mol_mem(($.$bog_dock_bar.prototype), "Todo"));
 	($mol_mem(($.$bog_dock_bar.prototype), "Molefy"));
+	($mol_mem(($.$bog_dock_bar.prototype), "Jj"));
+	($mol_mem(($.$bog_dock_bar.prototype), "Blitz"));
 	($mol_mem(($.$bog_dock_bar.prototype), "Merch"));
 	($mol_mem(($.$bog_dock_bar.prototype), "Doodle"));
 	($mol_mem(($.$bog_dock_bar.prototype), "Atelier"));
@@ -7383,7 +7450,11 @@ var $;
                 const bar = this.bar();
                 const apps = this.apps();
                 const pairs = [
+                    [bar.Id(), bar.Gram(), 'login'],
+                    [bar.Id(), bar.Music(), 'login'],
+                    [bar.Id(), bar.Todo(), 'login'],
                     [bar.Id(), bar.Molefy(), 'login'],
+                    [bar.Id(), bar.Jj(), 'login'],
                     [bar.Id(), bar.Merch(), 'login'],
                     [bar.Gram(), bar.Music(), 'embed'],
                 ];
@@ -7458,7 +7529,7 @@ var $;
                         .map(link => this.node_title(link.from === focus ? link.to : link.from));
                     return names.length ? [`${labels[kind]}: ${names.join(', ')}`] : [];
                 });
-                return `${this.node_title(focus)}. ${parts.join('; ') || this.label_none()}`;
+                return `${this.apps()[focus].about_hint()}. ${parts.join('; ') || this.label_none()}`;
             }
         }
         __decorate([
@@ -10875,7 +10946,9 @@ var $;
                 $mol_assert_equal(home.links().every(link => link.from >= 0 && link.to >= 0), true);
                 home.focus(0);
                 const bright = home.apps().map((_, i) => i).filter(i => !home.node_dim(i)).map(i => home.node_title(i));
-                $mol_assert_equal(bright, ['ID', 'Molefy', 'Merchquarium']);
+                $mol_assert_equal(bright, ['ID', 'Gram', 'Music', 'Microtodo', 'Molefy', 'JJ', 'Merchquarium']);
+                $mol_assert_equal(home.apps().every(app => Boolean(app.about())), true);
+                $mol_assert_equal(home.caption().startsWith(home.apps()[0].about_hint()), true);
             },
         });
     })($$ = $_1.$$ || ($_1.$$ = {}));

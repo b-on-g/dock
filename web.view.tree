@@ -166,51 +166,77 @@ $giper_web_bar $mol_page
 			uri \https://github.com/giper-dev/web
 
 
+$bog_dock_bar_link $giper_web_bar_link
+	about \
+	Icon $mol_image
+		uri <= icon
+		hint <= about_hint \
+
 $bog_dock_bar $giper_web_bar
 	title @ \Bog Dock
 	plugins /
 		^
 		<= Skin $bog_dock_skin
 	apps /
-		<= Id $giper_web_bar_link
+		<= Id $bog_dock_bar_link
 			title \ID
+			about @ \One sign-in for all apps
 			uri \https://dev-cmyser.github.io/id/
 			icon \bog/dock/logo/id.svg
-		<= Gram $giper_web_bar_link
+		<= Gram $bog_dock_bar_link
 			title \Gram
+			about @ \Messenger with groups and calls
 			uri \https://b-on-g.github.io/gram/
 			icon \bog/gram/logo/logo.svg
-		<= Music $giper_web_bar_link
+		<= Music $bog_dock_bar_link
 			title \Music
+			about @ \Your music on all devices
 			uri \https://b-on-g.github.io/music/
 			icon \bog/music/app/favicon.svg
-		<= Todo $giper_web_bar_link
+		<= Todo $bog_dock_bar_link
 			title \Microtodo
+			about @ \To-do lists, personal and shared
 			uri \https://b-on-g.github.io/microtodo/#!search={query}
 			icon \bog/microtodo/assets/logo.svg
-		<= Molefy $giper_web_bar_link
+		<= Molefy $bog_dock_bar_link
 			title \Molefy
+			about @ \Income and expenses
 			uri \https://b-on-g.github.io/molefy/
 			icon \bog/molefy/assets/logo.svg
-		<= Merch $giper_web_bar_link
+		<= Jj $bog_dock_bar_link
+			title \JJ
+			about @ \Blogs, feed and subscriptions
+			uri \https://b-on-g.github.io/jj/
+			icon \bog/dock/logo/jj.svg
+		<= Blitz $bog_dock_bar_link
+			title \Blitz
+			about @ \Quiz game
+			uri \https://b-on-g.github.io/blitz/
+			icon \bog/dock/logo/blitz.svg
+		<= Merch $bog_dock_bar_link
 			title \Merchquarium
+			about @ \Merch catalogs
 			uri \https://b-on-g.github.io/merchquarium/
 			icon \bog/dock/logo/merch.svg
-		<= Doodle $giper_web_bar_link
+		<= Doodle $bog_dock_bar_link
 			title \Doodle
+			about @ \Draw lines and listen to music
 			uri \https://b-on-g.github.io/doodle/app/
 			icon \bog/doodle/assets/logo.svg
-		<= Atelier $giper_web_bar_link
+		<= Atelier $bog_dock_bar_link
 			title \Atelier
+			about @ \Draw magic glyphs that come alive
 			uri \https://b-on-g.github.io/atelier/
 			icon \bog/atelier/assets/logo.svg
-		<= Giper $giper_web_bar_link
+		<= Giper $bog_dock_bar_link
 			title \Giper Web
+			about @ \Giper Dev apps
 			uri \https://web.giper.dev/#query={query}
 			icon \giper/web/logo/logo.svg
 	head /
-		<= Dock $giper_web_bar_link
+		<= Dock $bog_dock_bar_link
 			title <= title
+			about @ \Map of apps and their connections
 			uri \https://b-on-g.github.io/dock/
 			icon \bog/dock/logo/logo.svg
 	foot /
